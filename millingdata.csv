@@ -1,0 +1,5 @@
+Arbeitsvorgang;Werkzeug;Stahl bis 500N/mm²;Stahl über 500N/mm²;Messing|Bronze;Aluminium;Kunststoff;Vorschub [mm/Umdrehung]
+Schruppen;HSS;25;15;40;100;70;bis 0,05
+;HM;120;60;120;400;;
+Schlichten;HSS;32;20;60;160;100;bis 0,03
+;HM;160;100;200;600;;
