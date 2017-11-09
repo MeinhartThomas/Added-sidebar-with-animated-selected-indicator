@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hkf-uW-cCU">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Favouriten-->
+        <scene sceneID="mJ2-MW-akT">
+            <objects>
+                <viewController id="ziV-x7-8bk" userLabel="Favouriten" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wef-Dk-IPz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background header" translatesAutoresizingMaskIntoConstraints="NO" id="3dL-81-Rns">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="e9t-Gd-LXn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favouriten" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrq-J8-ocU" userLabel="Label Einstellungen">
+                                <rect key="frame" x="145.66666666666666" y="30" width="122.99999999999997" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                <color key="textColor" red="0.1647058824" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background main area" translatesAutoresizingMaskIntoConstraints="NO" id="jhh-Gv-nWs">
+                                <rect key="frame" x="0.0" y="80" width="414" height="607"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jhh-Gv-nWs" firstAttribute="top" secondItem="3dL-81-Rns" secondAttribute="bottom" id="9Bq-ay-Ypa"/>
+                            <constraint firstItem="jhh-Gv-nWs" firstAttribute="leading" secondItem="hnE-T5-Cw3" secondAttribute="leading" id="AnG-aZ-gUf"/>
+                            <constraint firstItem="3dL-81-Rns" firstAttribute="top" secondItem="wef-Dk-IPz" secondAttribute="top" id="DNK-fk-hcD"/>
+                            <constraint firstItem="jhh-Gv-nWs" firstAttribute="trailing" secondItem="hnE-T5-Cw3" secondAttribute="trailing" id="M06-iG-PvT"/>
+                            <constraint firstItem="3dL-81-Rns" firstAttribute="leading" secondItem="hnE-T5-Cw3" secondAttribute="leading" id="Oli-82-M8Y"/>
+                            <constraint firstItem="hnE-T5-Cw3" firstAttribute="trailing" secondItem="3dL-81-Rns" secondAttribute="trailing" id="aYz-9v-Lng"/>
+                            <constraint firstItem="Nrq-J8-ocU" firstAttribute="centerX" secondItem="wef-Dk-IPz" secondAttribute="centerX" id="bDW-1E-cub"/>
+                            <constraint firstItem="jhh-Gv-nWs" firstAttribute="bottom" secondItem="hnE-T5-Cw3" secondAttribute="bottom" id="gq0-aM-fXh"/>
+                            <constraint firstItem="Nrq-J8-ocU" firstAttribute="top" secondItem="3dL-81-Rns" secondAttribute="bottom" constant="-50" id="kwY-2T-Tk5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hnE-T5-Cw3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="FRv-eL-ZtZ" userLabel="Favouriten"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gEv-yV-bIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-717.39130434782612" y="-589.4021739130435"/>
+        </scene>
+        <!--Einstellungen-->
+        <scene sceneID="ie2-Gm-KM2">
+            <objects>
+                <viewController id="EI6-bl-cDP" userLabel="Einstellungen" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SnB-tc-2eR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background header" translatesAutoresizingMaskIntoConstraints="NO" id="GLq-gm-aOD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="89c-t7-qbn"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background main area" translatesAutoresizingMaskIntoConstraints="NO" id="ugg-V6-SRa">
+                                <rect key="frame" x="0.0" y="80" width="414" height="607"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Einstellungen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGm-v1-FO7">
+                                <rect key="frame" x="128.66666666666666" y="30" width="156.99999999999997" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                <color key="textColor" red="0.1647058824" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yGm-v1-FO7" firstAttribute="top" secondItem="GLq-gm-aOD" secondAttribute="bottom" constant="-50" id="APW-QV-vaN"/>
+                            <constraint firstItem="ugg-V6-SRa" firstAttribute="bottom" secondItem="7j5-sY-jAR" secondAttribute="bottom" id="JQr-Tg-18D"/>
+                            <constraint firstItem="ugg-V6-SRa" firstAttribute="leading" secondItem="7j5-sY-jAR" secondAttribute="leading" id="WNc-zX-uWj"/>
+                            <constraint firstItem="7j5-sY-jAR" firstAttribute="trailing" secondItem="GLq-gm-aOD" secondAttribute="trailing" id="YkA-7G-zbj"/>
+                            <constraint firstItem="ugg-V6-SRa" firstAttribute="trailing" secondItem="7j5-sY-jAR" secondAttribute="trailing" id="kMB-OP-VSR"/>
+                            <constraint firstItem="GLq-gm-aOD" firstAttribute="leading" secondItem="7j5-sY-jAR" secondAttribute="leading" id="lF5-db-bBD"/>
+                            <constraint firstItem="ugg-V6-SRa" firstAttribute="top" secondItem="GLq-gm-aOD" secondAttribute="bottom" id="pHc-CL-7XD"/>
+                            <constraint firstItem="yGm-v1-FO7" firstAttribute="centerX" secondItem="SnB-tc-2eR" secondAttribute="centerX" id="t5v-sC-Vuy"/>
+                            <constraint firstItem="GLq-gm-aOD" firstAttribute="top" secondItem="SnB-tc-2eR" secondAttribute="top" id="zev-5q-0F1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7j5-sY-jAR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Einstellungen" image="settings icon" id="XFE-ce-t1a" userLabel="Einstellungen"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0H-cx-mRr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-717.39130434782612" y="75.815217391304358"/>
+        </scene>
+        <!--Rechner-->
+        <scene sceneID="gHc-2h-brk">
+            <objects>
+                <viewController id="hxB-me-lPh" userLabel="Rechner" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dqO-Wo-XdW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background header" translatesAutoresizingMaskIntoConstraints="NO" id="QVI-My-Euv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="9oY-SD-WKx"/>
+                                    <constraint firstAttribute="height" constant="80" id="Nfl-uo-LdF"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drehzahlrechner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZF-rf-Oj7" userLabel="Label Drehzahlrechner">
+                                <rect key="frame" x="110" y="30" width="195" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                <color key="textColor" red="0.1647058824" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmw-Jq-DFK" userLabel="background sidebar">
+                                <rect key="frame" x="0.0" y="80" width="85" height="607"/>
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.19607843137254902" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="5bR-CV-dzo"/>
+                                    <constraint firstAttribute="width" constant="85" id="5yl-5s-iPZ"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="85" id="xWf-TJ-UzJ"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background main area" translatesAutoresizingMaskIntoConstraints="NO" id="Ljc-aW-SPU">
+                                <rect key="frame" x="85" y="80" width="329" height="607"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ljc-aW-SPU" firstAttribute="top" secondItem="QVI-My-Euv" secondAttribute="bottom" id="3Uj-Av-ujg"/>
+                            <constraint firstItem="VZF-rf-Oj7" firstAttribute="top" secondItem="QVI-My-Euv" secondAttribute="bottom" constant="-50" id="3cj-GS-3g4"/>
+                            <constraint firstItem="Ljc-aW-SPU" firstAttribute="leading" secondItem="Tmw-Jq-DFK" secondAttribute="trailing" id="49i-O7-a3B"/>
+                            <constraint firstItem="Tmw-Jq-DFK" firstAttribute="leading" secondItem="qEP-hI-ryM" secondAttribute="leading" id="8TG-E0-jts"/>
+                            <constraint firstItem="QVI-My-Euv" firstAttribute="trailing" secondItem="qEP-hI-ryM" secondAttribute="trailing" id="Dj3-6V-Mdb"/>
+                            <constraint firstItem="Tmw-Jq-DFK" firstAttribute="top" secondItem="QVI-My-Euv" secondAttribute="bottom" id="bp4-lO-Z2o"/>
+                            <constraint firstItem="Ljc-aW-SPU" firstAttribute="trailing" secondItem="qEP-hI-ryM" secondAttribute="trailing" id="cS7-0D-v8n"/>
+                            <constraint firstItem="QVI-My-Euv" firstAttribute="top" secondItem="dqO-Wo-XdW" secondAttribute="top" id="lIX-eE-ABA"/>
+                            <constraint firstItem="VZF-rf-Oj7" firstAttribute="centerX" secondItem="dqO-Wo-XdW" secondAttribute="centerX" id="nEl-Tl-5v7"/>
+                            <constraint firstItem="QVI-My-Euv" firstAttribute="leading" secondItem="qEP-hI-ryM" secondAttribute="leading" id="oXn-Al-amb"/>
+                            <constraint firstItem="Tmw-Jq-DFK" firstAttribute="bottom" secondItem="qEP-hI-ryM" secondAttribute="bottom" id="ojd-bm-aGR"/>
+                            <constraint firstItem="Ljc-aW-SPU" firstAttribute="bottom" secondItem="qEP-hI-ryM" secondAttribute="bottom" id="vSv-3x-zpQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qEP-hI-ryM"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Rechner" image="calculator icon" id="MDb-9J-tto" userLabel="Rechner"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l6e-Un-HrG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-717.39130434782612" y="-1268.4782608695652"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="WxC-7D-fyi">
+            <objects>
+                <tabBarController id="Hkf-uW-cCU" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="f8n-Q1-ObC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.10588235294117647" green="0.12549019607843137" blue="0.12941176470588234" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hxB-me-lPh" kind="relationship" relationship="viewControllers" id="UJH-QU-8sc"/>
+                        <segue destination="ziV-x7-8bk" kind="relationship" relationship="viewControllers" id="oRS-mx-3PE"/>
+                        <segue destination="EI6-bl-cDP" kind="relationship" relationship="viewControllers" id="3dw-jB-7gB"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vus-qO-rgo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1834" y="-522"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background header" width="414" height="80"/>
+        <image name="background main area" width="329" height="595"/>
+        <image name="calculator icon" width="20" height="28"/>
+        <image name="settings icon" width="28" height="28"/>
+    </resources>
+</document>
