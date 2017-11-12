@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="-717.39130434782612" y="75.815217391304358"/>
         </scene>
-        <!--Rechner-->
+        <!--Calculator-->
         <scene sceneID="gHc-2h-brk">
             <objects>
-                <viewController id="hxB-me-lPh" userLabel="Rechner" customClass="WorkingStepViewController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hxB-me-lPh" userLabel="Calculator" customClass="CalculatorViewController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dqO-Wo-XdW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -336,13 +336,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Stahl bis 500N/m"/>
                                 <connections>
-                                    <action selector="steelOver500ButtonPressed:" destination="jyh-NT-O1I" eventType="touchUpInside" id="D76-wZ-j6k"/>
+                                    <action selector="steelUnderButtonPressed:" destination="jyh-NT-O1I" eventType="touchUpInside" id="8NR-NQ-hTJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LF1-kR-Xtr">
                                 <rect key="frame" x="150" y="210" width="145" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Stahl über 500 n/mm"/>
+                                <connections>
+                                    <action selector="steelOverButtonPressed:" destination="jyh-NT-O1I" eventType="touchUpInside" id="kuE-02-crv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kyr-PG-JIe">
                                 <rect key="frame" x="184" y="255" width="72" height="30"/>
@@ -427,7 +430,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Drehzahl berechnen"/>
                                 <connections>
-                                    <action selector="calculateButtonPressed:" destination="qsU-yP-rAe" eventType="touchUpInside" id="Qr5-rf-XQF"/>
                                     <action selector="calculateRotationSpeedPressed:" destination="qsU-yP-rAe" eventType="touchUpInside" id="s7y-8v-Ihv"/>
                                 </connections>
                             </button>
@@ -436,14 +438,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="continue"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="diameter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a7x-Yb-QL2">
                                 <rect key="frame" x="174" y="115" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="next"/>
+                                <connections>
+                                    <action selector="diameterFieldEditingChanged:" destination="qsU-yP-rAe" eventType="editingChanged" id="hng-C7-MmT"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -472,10 +477,10 @@
             </objects>
             <point key="canvasLocation" x="2558" y="-1268"/>
         </scene>
-        <!--result-->
+        <!--Result-->
         <scene sceneID="s0p-IW-u7v">
             <objects>
-                <viewController storyboardIdentifier="resultView" id="dkg-xg-ZgH" userLabel="result" customClass="ResultViewController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resultView" id="dkg-xg-ZgH" userLabel="Result" customClass="ResultViewController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zhD-XH-0iW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -504,7 +509,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pVm-0J-52f">
-                                <rect key="frame" x="228" y="279" width="42" height="21"/>
+                                <rect key="frame" x="173" y="273" width="152" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -529,13 +534,172 @@
                         <viewLayoutGuide key="safeArea" id="1zL-NS-nJ7"/>
                     </view>
                     <connections>
-                        <outlet property="resultLabel" destination="pVm-0J-52f" id="dwj-qf-WQ8"/>
                         <outlet property="rotationSpeedLabel" destination="pVm-0J-52f" id="rfe-Qq-Ibu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCZ-UW-Ovl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3406" y="-1268"/>
+            <point key="canvasLocation" x="3405.7971014492755" y="-1268.4782608695652"/>
+        </scene>
+        <!--Working Step-->
+        <scene sceneID="WhU-mw-OfO">
+            <objects>
+                <viewController storyboardIdentifier="workingStepView" id="aPW-NJ-rS7" userLabel="Working Step" customClass="WorkingStepViewController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="en5-xq-aes">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g52-oa-zNI" userLabel="background sidebar">
+                                <rect key="frame" x="0.0" y="80" width="85" height="656"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="dRR-qa-Vvp"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background main area" translatesAutoresizingMaskIntoConstraints="NO" id="rM6-zg-DgN">
+                                <rect key="frame" x="85" y="80" width="329" height="656"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background header" translatesAutoresizingMaskIntoConstraints="NO" id="Zbf-fl-PRw">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="2Qg-RK-KXW"/>
+                                    <constraint firstAttribute="height" constant="80" id="sim-yZ-Gl2"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drehzahlrechner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58t-wS-4hd">
+                                <rect key="frame" x="109.66666666666669" y="30" width="195" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUO-PT-5lT">
+                                <rect key="frame" x="178" y="157" width="72" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Schlichten"/>
+                                <connections>
+                                    <action selector="SchlichtenButtonPressed:" destination="aPW-NJ-rS7" eventType="touchUpInside" id="rhZ-9j-FIg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xg7-kI-TtW">
+                                <rect key="frame" x="177" y="203" width="75" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Schruppen"/>
+                                <connections>
+                                    <action selector="SchruppenButtonPressed:" destination="aPW-NJ-rS7" eventType="touchUpInside" id="olF-wM-tXg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j75-tv-dd7">
+                                <rect key="frame" x="179" y="263" width="74" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Abstechen"/>
+                                <connections>
+                                    <action selector="AbstechenButtonPressed:" destination="aPW-NJ-rS7" eventType="touchUpInside" id="AcO-zQ-kgq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nDU-p2-pxU">
+                                <rect key="frame" x="178" y="313" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Einstechen"/>
+                                <connections>
+                                    <action selector="EinstechenButtonPressed:" destination="aPW-NJ-rS7" eventType="touchUpInside" id="KDW-1w-Yas"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rM6-zg-DgN" firstAttribute="top" secondItem="58t-wS-4hd" secondAttribute="bottom" constant="16" id="3pV-0c-kws"/>
+                            <constraint firstItem="Zbf-fl-PRw" firstAttribute="leading" secondItem="7wM-Bf-u2j" secondAttribute="leading" id="O3l-al-z4v"/>
+                            <constraint firstItem="rM6-zg-DgN" firstAttribute="top" secondItem="Zbf-fl-PRw" secondAttribute="bottom" id="Q5u-OC-YxJ"/>
+                            <constraint firstItem="rM6-zg-DgN" firstAttribute="trailing" secondItem="7wM-Bf-u2j" secondAttribute="trailing" id="Tkf-PD-mnU"/>
+                            <constraint firstItem="g52-oa-zNI" firstAttribute="leading" secondItem="7wM-Bf-u2j" secondAttribute="leading" id="Zec-im-H4c"/>
+                            <constraint firstItem="g52-oa-zNI" firstAttribute="bottom" secondItem="7wM-Bf-u2j" secondAttribute="bottom" id="dv6-Tb-e25"/>
+                            <constraint firstItem="rM6-zg-DgN" firstAttribute="leading" secondItem="g52-oa-zNI" secondAttribute="trailing" id="l58-fU-ToK"/>
+                            <constraint firstItem="58t-wS-4hd" firstAttribute="centerX" secondItem="en5-xq-aes" secondAttribute="centerX" id="oFX-8m-sa4"/>
+                            <constraint firstItem="g52-oa-zNI" firstAttribute="top" secondItem="Zbf-fl-PRw" secondAttribute="bottom" id="opi-o6-N8F"/>
+                            <constraint firstItem="Zbf-fl-PRw" firstAttribute="top" secondItem="en5-xq-aes" secondAttribute="top" id="rlw-FG-oBs"/>
+                            <constraint firstItem="Zbf-fl-PRw" firstAttribute="trailing" secondItem="7wM-Bf-u2j" secondAttribute="trailing" id="xdg-Ob-C3Y"/>
+                            <constraint firstItem="rM6-zg-DgN" firstAttribute="bottom" secondItem="7wM-Bf-u2j" secondAttribute="bottom" id="xyd-w4-ptc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7wM-Bf-u2j"/>
+                    </view>
+                    <connections>
+                        <outlet property="abstechenButton" destination="j75-tv-dd7" id="j9Z-vF-a0j"/>
+                        <outlet property="einstechenButton" destination="nDU-p2-pxU" id="GYE-kY-bUb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vfs-PG-lHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="902.89855072463774" y="-1963.0434782608697"/>
+        </scene>
+        <!--Tool View-->
+        <scene sceneID="TLJ-g5-T89">
+            <objects>
+                <viewController storyboardIdentifier="toolView" id="gzb-pt-amI" userLabel="Tool View" customClass="ToolViewController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uxW-db-hPx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dAW-62-BgC" userLabel="background sidebar">
+                                <rect key="frame" x="0.0" y="80" width="85" height="656"/>
+                                <color key="backgroundColor" red="0.1647058824" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="FqB-ne-euP"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background header" translatesAutoresizingMaskIntoConstraints="NO" id="0h1-9f-lpb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="CUu-pK-IWn"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Zzh-GY-oPR"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drehzahlrechner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBJ-vE-uzP">
+                                <rect key="frame" x="109.66666666666669" y="30" width="195" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNs-T1-RvE">
+                                <rect key="frame" x="218" y="242" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="HSS"/>
+                                <connections>
+                                    <action selector="HSSButtonPressed:" destination="gzb-pt-amI" eventType="touchUpInside" id="bPG-Oe-mSf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piL-Ul-Y9t">
+                                <rect key="frame" x="218" y="304" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="HM"/>
+                                <connections>
+                                    <action selector="HMButtonPressed:" destination="gzb-pt-amI" eventType="touchUpInside" id="6jQ-7Q-gMA"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background main area" translatesAutoresizingMaskIntoConstraints="NO" id="bGg-T7-80m">
+                                <rect key="frame" x="85" y="80" width="329" height="656"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dAW-62-BgC" firstAttribute="leading" secondItem="ebc-po-GQu" secondAttribute="leading" id="95y-Tc-gpN"/>
+                            <constraint firstItem="dAW-62-BgC" firstAttribute="bottom" secondItem="ebc-po-GQu" secondAttribute="bottom" id="H7y-jM-KS4"/>
+                            <constraint firstItem="bGg-T7-80m" firstAttribute="bottom" secondItem="ebc-po-GQu" secondAttribute="bottom" id="Hp0-T9-B9C"/>
+                            <constraint firstItem="bGg-T7-80m" firstAttribute="leading" secondItem="dAW-62-BgC" secondAttribute="trailing" id="Ikr-Dx-Yag"/>
+                            <constraint firstItem="0h1-9f-lpb" firstAttribute="trailing" secondItem="ebc-po-GQu" secondAttribute="trailing" id="KI6-1M-bYG"/>
+                            <constraint firstItem="0h1-9f-lpb" firstAttribute="leading" secondItem="ebc-po-GQu" secondAttribute="leading" id="Ont-Xz-CQj"/>
+                            <constraint firstItem="bGg-T7-80m" firstAttribute="trailing" secondItem="ebc-po-GQu" secondAttribute="trailing" id="XGX-nT-Nxl"/>
+                            <constraint firstItem="bGg-T7-80m" firstAttribute="top" secondItem="0h1-9f-lpb" secondAttribute="bottom" id="XgO-Rn-Eld"/>
+                            <constraint firstItem="bGg-T7-80m" firstAttribute="top" secondItem="TBJ-vE-uzP" secondAttribute="bottom" constant="16" id="cgt-4H-XGh"/>
+                            <constraint firstItem="0h1-9f-lpb" firstAttribute="top" secondItem="uxW-db-hPx" secondAttribute="top" id="elG-dH-AQb"/>
+                            <constraint firstItem="TBJ-vE-uzP" firstAttribute="centerX" secondItem="uxW-db-hPx" secondAttribute="centerX" id="pSc-U8-qMx"/>
+                            <constraint firstItem="dAW-62-BgC" firstAttribute="top" secondItem="0h1-9f-lpb" secondAttribute="bottom" id="rVs-S6-HbE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ebc-po-GQu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ut-D1-Yvb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1701" y="-1963"/>
         </scene>
     </scenes>
     <resources>

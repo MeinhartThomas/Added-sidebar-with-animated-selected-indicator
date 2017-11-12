@@ -10,8 +10,10 @@ import Foundation
 import UIKit
 
 class MaterialViewController: UIViewController {
+    var work: Work?
     var workingStep: WorkingStep?
     var condition: Condition?
+    var tool: Tool?
     
     @IBAction func steelOverButtonPressed(_ sender: Any) {
         presentNextView(material: Material.steelOver500)
@@ -36,9 +38,10 @@ class MaterialViewController: UIViewController {
     func presentNextView(material: Material){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let diameterView = storyboard.instantiateViewController(withIdentifier: "diameterView") as! DiameterViewController
-        diameterView.workingStep = workingStep
+        diameterView.work = work
         diameterView.condition = condition
         diameterView.material = material
+        diameterView.tool = tool
         self.present(diameterView, animated: false, completion: nil)
     }
 

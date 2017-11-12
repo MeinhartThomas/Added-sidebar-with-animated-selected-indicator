@@ -9,14 +9,14 @@
 import UIKit
 
 class ConditionViewController: UIViewController {
-    var workingStep: WorkingStep?
+    var work: Work?
     
     @IBAction func optimalButtonPressed(_ sender: Any) {
-        
+        presentNextView(condition: Condition.optimal)
     }
     
     @IBAction func normalButtonPressed(_ sender: Any) {
-        
+        presentNextView(condition: Condition.normal)
     }
     
     @IBAction func badButtonPressed(_ sender: Any) {
@@ -25,10 +25,21 @@ class ConditionViewController: UIViewController {
     
     func presentNextView(condition: Condition){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let materialView = storyboard.instantiateViewController(withIdentifier: "materialView") as! MaterialViewController
-        materialView.workingStep = workingStep
-        materialView.condition = condition
-        self.present(materialView, animated: false, completion: nil)
+        
+        switch work {
+            case .drilling?:
+                let materialView = storyboard.instantiateViewController(withIdentifier: "materialView") as! MaterialViewController
+                materialView.work = work
+                materialView.condition = condition
+                self.present(materialView, animated: false, completion: nil)
+            case .lathing?, .milling?:
+                let workingStepView = storyboard.instantiateViewController(withIdentifier: "workingStepView") as! WorkingStepViewController
+                workingStepView.condition = condition
+                workingStepView.work = work
+                self.present(workingStepView, animated: false, completion: nil)
+            case .none:
+                break
+        }
     }
     
 }

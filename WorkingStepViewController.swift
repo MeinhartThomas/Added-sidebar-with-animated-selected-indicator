@@ -1,42 +1,75 @@
 //
-//  ViewController.swift
+//  WorkingStepViewController.swift
 //  DrillMe
 //
-//  Created by Thomas Meinhart on 31.10.17.
+//  Created by Thomas Meinhart on 12.11.17.
 //  Copyright © 2017 Thomas Meinhart. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class WorkingStepViewController: UIViewController {
+    var work: Work?
+    var condition: Condition?
+
+    @IBOutlet weak var abstechenButton: UIButton!
+    @IBOutlet weak var einstechenButton: UIButton!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if work == Work.milling {
+            abstechenButton.removeFromSuperview()
+            einstechenButton.removeFromSuperview()
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func SchlichtenButtonPressed(_ sender: Any) {
+        presentNextView(workingStep: WorkingStep.schlichten)
     }
 
-    @IBAction func drillingButtonPressed(_ sender: Any) {
-        presentNextView(workingStep: WorkingStep.drilling)
+    @IBAction func SchruppenButtonPressed(_ sender: Any) {
+        presentNextView(workingStep: WorkingStep.schruppen)
     }
-    
-    @IBAction func lathingButtonPressed(_ sender: Any) {
-        presentNextView(workingStep: WorkingStep.lathing)
+
+    @IBAction func AbstechenButtonPressed(_ sender: Any) {
+        presentNextView(workingStep: WorkingStep.abstechen)
     }
-    
-    @IBAction func millingButtonPressed(_ sender: Any) {
-        presentNextView(workingStep: WorkingStep.milling)
+
+    @IBAction func EinstechenButtonPressed(_ sender: Any) {
+        presentNextView(workingStep: WorkingStep.einstechen)
     }
     
     func presentNextView(workingStep: WorkingStep){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let conditionView = storyboard.instantiateViewController(withIdentifier: "conditionView") as! ConditionViewController
-        conditionView.workingStep = workingStep
-        self.present(conditionView, animated: false, completion: nil)
+        
+        switch work {
+        case .drilling?:
+            break
+        case .lathing?:
+            if (workingStep == WorkingStep.schlichten) || (workingStep == WorkingStep.schruppen) {
+                let toolView = storyboard.instantiateViewController(withIdentifier: "toolView") as! ToolViewController
+                toolView.condition = condition
+                toolView.work = work
+                toolView.workingStep = workingStep
+                self.present(toolView, animated: false, completion: nil)
+            }
+            if (workingStep == WorkingStep.abstechen) || (workingStep == WorkingStep.einstechen) {
+                let materialView = storyboard.instantiateViewController(withIdentifier: "materialView") as! MaterialViewController
+                materialView.condition = condition
+                materialView.work = work
+                materialView.workingStep = workingStep
+                self.present(materialView, animated: false, completion: nil)
+            }
+        case .milling?:
+            let materialView = storyboard.instantiateViewController(withIdentifier: "materialView") as! MaterialViewController
+            materialView.condition = condition
+            materialView.work = work
+            materialView.workingStep = workingStep
+            self.present(materialView, animated: false, completion: nil)
+        case .none:
+            break
+        }
     }
+
 }
 

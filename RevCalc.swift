@@ -24,10 +24,17 @@ enum Condition: Int {
     case bad = 3
 }
 
-enum WorkingStep: Int {
+enum Work: Int {
     case drilling = 1
     case lathing = 2
     case milling = 3
+}
+
+enum WorkingStep: Int {
+    case schlichten = 1
+    case schruppen = 2
+    case abstechen = 3
+    case einstechen = 4
 }
 
 enum Tool: Int {
@@ -37,18 +44,18 @@ enum Tool: Int {
 
 class RevCalc {
     
-    var workingStep: WorkingStep?{
-        didSet{
-            if workingStep == WorkingStep.drilling {
-                tool = Tool.HSS.rawValue
-            }
-        }
-    }
+//    var workingStep: WorkingStep?{
+//        didSet{
+//            if workingStep == WorkingStep.drilling {
+//                tool = Tool.HSS.rawValue
+//            }
+//        }
+//    }
     
-    var tool: Int?
-    var condition: Int?
-    var material: Int?
-    var diameter: Double?
+//    var tool: Int?
+//    var condition: Int?
+//    var material: Int?
+//    var diameter: Double?
     
     var drillingData: [[String]] = []
     
@@ -59,14 +66,14 @@ class RevCalc {
     
     //MARK: - rotation speed calculation methods
     
-    func calculateRotationSpeed(_ workingStep: WorkingStep){
+    func calculateRotationSpeed(_ workingStep: Work){
         
     }
     
-    func calculateDrillingRotationalSpeed() -> Double {
-        let cuttingSpeed = getCuttingSpeed(from: Material(rawValue: material!)!)
+    func calculateDrillingRotationalSpeed(condition: Condition, material: Material, diameter: Double) -> Double {
+        let cuttingSpeed = getCuttingSpeed(from: material)
         
-        return Double(1000 * cuttingSpeed)/(diameter! * Double.pi)
+        return Double(1000 * cuttingSpeed)/(diameter * Double.pi)
     }
     
     func getCuttingSpeed(from material: Material) -> Int{
