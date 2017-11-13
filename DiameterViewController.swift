@@ -37,15 +37,15 @@ class DiameterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func calculateRotationSpeedPressed(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let resultView = storyboard.instantiateViewController(withIdentifier: "resultView") as! ResultViewController
-        var revCalc = RevCalc()
-        rotationalSpeed = revCalc.calculateDrillingRotationalSpeed(condition: condition!, material: material!, diameter: diameter!)
-        
-        resultView.rotationSpeed = rotationalSpeed
-        self.present(resultView, animated: false, completion: nil)
-    }
+//    @IBAction func calculateRotationSpeedPressed(_ sender: Any) {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let resultView = storyboard.instantiateViewController(withIdentifier: "resultView") as! ResultViewController
+//        var revCalc = RevCalc()
+//        rotationalSpeed = revCalc.calculateDrillingRotationalSpeed(condition: condition!, material: material!, diameter: diameter!)
+//        
+//        resultView.rotationSpeed = rotationalSpeed
+//        self.present(resultView, animated: false, completion: nil)
+//    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let decimalSeparator = ","

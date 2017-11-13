@@ -10,6 +10,11 @@ import Foundation
 
 //MARK: - Enums
 
+
+enum CellType: String {
+    case buttonWhiteBig, buttonWhiteSmall, buttonBlackSmall, descriptionLabel
+}
+
 enum Material: Int {
     case steelUnder500 = 1
     case steelOver500 = 2
@@ -42,7 +47,16 @@ enum Tool: Int {
     case HM = 2
 }
 
-class RevCalc {
+struct Cell {
+    init(celltype: CellType, labeltext: String?) {
+        self.celltype = celltype
+        self.labeltext = labeltext
+    }
+    var celltype: CellType
+    var labeltext: String?
+}
+
+class CalculatorLogic {
     
 //    var workingStep: WorkingStep?{
 //        didSet{
@@ -58,10 +72,12 @@ class RevCalc {
 //    var diameter: Double?
     
     var drillingData: [[String]] = []
+    var cells: [Cell] = []
     
 
     init() {
         drillingData = readDataFromCSV("drillingdata.csv")
+        cells = [Cell(celltype: CellType.descriptionLabel, labeltext: "Wähle den Arbeitsschritt") ,Cell(celltype: CellType.buttonWhiteBig, labeltext: "Bohren"), Cell(celltype: CellType.buttonWhiteBig, labeltext: "Drehen"), Cell(celltype: CellType.buttonWhiteBig, labeltext: "Fräsen")]
     }
     
     //MARK: - rotation speed calculation methods
