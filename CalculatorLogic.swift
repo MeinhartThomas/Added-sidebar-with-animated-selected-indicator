@@ -320,5 +320,99 @@ class CalculatorLogic {
         setWorkSelectionScreen()
     }
     
-    
+    func returnToScreenAt(sideBarIndex: Int) {
+        
+        if sideBarIndex == sidebarItems.count-1 {
+            return
+        }
+        
+        if sideBarIndex == 0 {
+            restart()
+            return
+        }
+        
+        //Remove sideBarItems
+        for index in 1...sidebarItems.count {
+            if index >= sideBarIndex+1 {
+                sidebarItems.removeLast()
+            }
+        }
+        
+        if sideBarIndex == 1 {
+            currentCalculation.condition = nil
+            currentCalculation.rotationSpeed = nil
+            currentCalculation.diameter = nil
+            currentCalculation.material = nil
+            currentCalculation.tool = nil
+            currentCalculation.workingStep = nil
+            setCellsForNextScreen()
+            return
+        }
+        
+        switch currentCalculation.work! {
+        case Work.drilling:
+            if sideBarIndex < 5 {
+                currentCalculation.rotationSpeed = nil
+            }
+            if sideBarIndex < 4 {
+                currentCalculation.diameter = nil
+            }
+            if sideBarIndex < 3 {
+                currentCalculation.material = nil
+            }
+            break
+            
+        case Work.lathing:
+         
+            switch currentCalculation.workingStep! {
+            case .schlichten, .schruppen:
+                if sideBarIndex < 7{
+                    currentCalculation.rotationSpeed = nil
+                }
+                if sideBarIndex < 6{
+                    currentCalculation.diameter = nil
+                }
+                if sideBarIndex < 5{
+                    currentCalculation.material = nil
+                }
+                if sideBarIndex < 4{
+                    currentCalculation.tool = nil
+                }
+                if sideBarIndex < 3{
+                    currentCalculation.workingStep = nil
+                }
+                
+            case .einstechen, .abstechen:
+                if sideBarIndex < 6{
+                    currentCalculation.rotationSpeed = nil
+                }
+                if sideBarIndex < 5{
+                    currentCalculation.diameter = nil
+                }
+                if sideBarIndex < 4{
+                    currentCalculation.material = nil
+                }
+                if sideBarIndex < 3{
+                    currentCalculation.workingStep = nil
+                }
+            }
+        case Work.milling:
+            if sideBarIndex < 7{
+                currentCalculation.rotationSpeed = nil
+            }
+            if sideBarIndex < 6{
+                currentCalculation.diameter = nil
+            }
+            if sideBarIndex < 5{
+                currentCalculation.material = nil
+            }
+            if sideBarIndex < 4{
+                currentCalculation.tool = nil
+            }
+            if sideBarIndex < 3{
+                currentCalculation.workingStep = nil
+            }
+        }
+        setCellsForNextScreen()
+    }
 }

@@ -176,6 +176,15 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         return item
     }
     
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
+        
+        calculatorLogic.returnToScreenAt(sideBarIndex: indexPath.row)
+                
+        tableView.reloadData()
+        sideBar.reloadData()
+    }
+    
     func setSelectedIndicator(){
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: [], animations: ({
             self.sideBarSelectedIndicator.frame.origin.y = CGFloat(85*(self.calculatorLogic.sidebarItems.count-1))
