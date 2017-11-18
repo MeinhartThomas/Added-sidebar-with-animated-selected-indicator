@@ -205,7 +205,7 @@
                                         </connections>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.098823529439999988" green="0.11764705884" blue="0.12" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.098039215686274508" green="0.11764705882352941" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="sZm-2E-ns5" firstAttribute="width" secondItem="oeg-bT-1D5" secondAttribute="width" id="26v-1p-olp"/>
                                     <constraint firstAttribute="width" constant="75" id="2ar-wR-c6b"/>
@@ -217,7 +217,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background main area" translatesAutoresizingMaskIntoConstraints="NO" id="Ayi-2C-PnX">
                                 <rect key="frame" x="75" y="80" width="339" height="607"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="31R-Sh-Vl6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="31R-Sh-Vl6">
                                 <rect key="frame" x="75" y="80" width="339" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -350,7 +350,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="339" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="button white small" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mBf-W0-Pz6">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="in mm" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" background="button white small" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mBf-W0-Pz6">
                                                     <rect key="frame" x="30" y="15" width="279" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55" id="Wou-7g-Osa"/>
@@ -471,6 +471,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="lKi-DC-ucG" id="JKd-ft-qvV"/>
                                     <outlet property="delegate" destination="lKi-DC-ucG" id="Kde-ei-oap"/>
+                                    <outletCollection property="gestureRecognizers" destination="ATE-ze-zaa" appends="YES" id="MU9-Ad-8cd"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -503,6 +504,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebQ-SC-Ncf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ATE-ze-zaa">
+                    <connections>
+                        <action selector="tableTapped:" destination="lKi-DC-ucG" id="Jhb-gi-bO4"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <exit id="rUe-z8-06J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-717.39130434782612" y="-1308.4239130434783"/>

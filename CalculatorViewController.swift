@@ -28,6 +28,18 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func tableTapped(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: self.tableView)
+        let path = self.tableView.indexPathForRow(at: location)
+        if let indexPathForRow = path {
+            self.tableView(self.tableView, didSelectRowAt: indexPathForRow)
+        } else {
+            let cell = tableView.cellForRow(at: IndexPath(row: 2, section: 0))
+            if let textFieldCell = cell as? TextFieldWhite {
+                textFieldCell.textField.resignFirstResponder()
+            }
+        }
+    }
     
     //MARK: - TableView methods
     
@@ -60,6 +72,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             
             case _ as CellDescriptionTextField:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldWhite") as! TextFieldWhite
+                cell.textField.becomeFirstResponder()
                 return cell
             
             case let cellDescription as CellDescriptionConditionButton:
