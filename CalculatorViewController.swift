@@ -187,7 +187,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func setSelectedIndicator(){
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: [], animations: ({
-            self.sideBarSelectedIndicator.frame.origin.y = CGFloat(85*(self.calculatorLogic.sidebarItems.count-1))
+            self.sideBarSelectedIndicator.frame.origin.y = CGFloat(75*(self.calculatorLogic.sidebarItems.count-1))
         }), completion: nil)
     }
 }
