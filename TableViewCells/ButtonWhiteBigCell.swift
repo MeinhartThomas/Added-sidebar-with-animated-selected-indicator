@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ButtonWhiteBigCell: UITableViewCell {
+class ButtonWhiteBigCell: Cells {
     
     @IBOutlet weak var label: UILabel!
 
 }
-

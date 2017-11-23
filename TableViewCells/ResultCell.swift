@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import iosMath
 
-class ResultCell: UITableViewCell {
+class ResultCell: Cells {
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var formulaLabel: UIView!
+    @IBOutlet weak var rotationSpeedLabel: UILabel!
 }

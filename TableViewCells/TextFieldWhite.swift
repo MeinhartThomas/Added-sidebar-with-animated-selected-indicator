@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldWhite: UITableViewCell {
+class TextFieldWhite: Cells {
     
     @IBOutlet weak var textField: UITextField!
 }

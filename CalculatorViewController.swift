@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import iosMath
 
-class CalculatorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate  {
+class CalculatorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate  {
     
     var calculatorLogic = CalculatorLogic()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sideBar: UICollectionView!
-    @IBOutlet weak var sideBarSelectedIndicator: UIImageView!
+    weak var sideBarSelectedIndicator: CALayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,21 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.backgroundView = UIImageView(image: UIImage(named: "background main area"))
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 95
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        let sideBarSelectedIndicator = CALayer()
+        let image = #imageLiteral(resourceName: "sidebar selected indicator").cgImage!
+        sideBarSelectedIndicator.contents = image
+        sideBarSelectedIndicator.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: 75, height: 75))
+        sideBarSelectedIndicator.zPosition = -1
+        sideBar.layer.insertSublayer(sideBarSelectedIndicator, at: 0)
+        self.sideBarSelectedIndicator = sideBarSelectedIndicator
+        
+        
+        let navigationBarTitle = UILabel()
+        navigationBarTitle.text = "Drehzahlrechner"
+        let font = UIFont.systemFont(ofSize: 28, weight: .light)
+        navigationBarTitle.font = font
+        navigationItem.titleView = navigationBarTitle
     }
     
     @IBAction func tableTapped(_ sender: UITapGestureRecognizer) {
@@ -57,8 +68,10 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 return cell
             
             case let cellDescription as CellDescriptionWorkButton:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteBig") as! ButtonWhiteBigCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteBigWithIcon") as! ButtonWhiteBigWithIconCell
                 cell.label.text = cellDescription.labelText
+                cell.icon.image = UIImage(named: cellDescription.iconName)
+                cell.addShadow()
                 return cell
             
             case _ as CellDescriptionSeparator:
@@ -68,40 +81,53 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             case let cellDescription as CellDescriptionCalculateButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonBlackSmall") as! ButtonBlackSmall
                 cell.label.text = cellDescription.labelText
+                cell.addShadow()
                 return cell
             
             case _ as CellDescriptionTextField:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldWhite") as! TextFieldWhite
                 cell.textField.becomeFirstResponder()
+                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionConditionButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteBig") as! ButtonWhiteBigCell
                 cell.label.text = cellDescription.labelText
+                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionMaterialButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteSmall") as! ButtonWhiteSmallCell
                 cell.label.text = cellDescription.labelText
+                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionWorkingStepButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteSmall") as! ButtonWhiteSmallCell
                 cell.label.text = cellDescription.labelText
+                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionToolButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteSmall") as! ButtonWhiteSmallCell
                 cell.label.text = cellDescription.labelText
+                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionResult:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Result") as! ResultCell
-                cell.label.text = cellDescription.diameterLabel
+                cell.rotationSpeedLabel.text = "= \(cellDescription.rotationSpeedLabel) U/min"
+                
+                let formula = createFormulaLabel(cuttingSpeed: cellDescription.cuttingSpeedLabel, diameter: cellDescription.diameterLabel)
+                formula.center = cell.formulaLabel.center
+                cell.formulaLabel.addSubview(formula)
+
+                cell.addShadow()
                 return cell
             
             case _ as CellDescriptionRestartButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RestartButton") as! RestartButton
+                cell.addShadow()
                 return cell
             
             default:
@@ -152,14 +178,20 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
 
             case _ as CellDescriptionCalculateButton:
                 let textFieldDiameter = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldWhite
-                let diameter = NSString(string: textFieldDiameter.textField.text!).doubleValue
-                calculatorLogic.currentCalculation.diameter = diameter
-                calculatorLogic.currentCalculation.getRotationSpeedAndForwardSpeed()
-                calculatorLogic.setCellsForNextScreen()
-                tableView.reloadData()
-                sideBar.reloadData()
-
-            
+                
+                if textFieldDiameter.textField.text!.isEmpty {
+                    let alert = UIAlertController(title: "Keinen Durchmesser eingegeben", message: "Gib einen Durchmesser ein", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let diameter = NSString(string: textFieldDiameter.textField.text!).doubleValue
+                    calculatorLogic.currentCalculation.diameter = diameter
+                    calculatorLogic.currentCalculation.getRotationSpeedAndForwardSpeed()
+                    calculatorLogic.setCellsForNextScreen()
+                    tableView.reloadData()
+                    sideBar.reloadData()
+                }
+                
             case _ as CellDescriptionRestartButton:
                 calculatorLogic.restart()
                 tableView.reloadData()
@@ -190,18 +222,52 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      
-        
         calculatorLogic.returnToScreenAt(sideBarIndex: indexPath.row)
-                
         tableView.reloadData()
         sideBar.reloadData()
     }
     
     func setSelectedIndicator(){
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: [], animations: ({
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [], animations: ({
             self.sideBarSelectedIndicator.frame.origin.y = CGFloat(75*(self.calculatorLogic.sidebarItems.count-1))
         }), completion: nil)
+    }
+    
+    //MARK: - IOSMath
+    
+    public func createFormulaLabel(cuttingSpeed: String, diameter: String) -> MTMathUILabel {
+        let formulaLabel: MTMathUILabel = MTMathUILabel()
+        formulaLabel.latex = "\\frac{\\sqrt{1000 \\cdot \(cuttingSpeed)}}{\(diameter) \\cdot \\pi}"
+        formulaLabel.fontSize = 40
+        formulaLabel.sizeToFit()
+        return formulaLabel
+    }
+    
+    //MARK: - TextField methods
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let decimalSeparator = ","
+        
+        let existingTextHasDecimalSeparator = textField.text?.range(of: decimalSeparator)
+        let replacementTextHasDecimalSeparator = string.range(of: decimalSeparator)
+        
+        if existingTextHasDecimalSeparator != nil, replacementTextHasDecimalSeparator != nil {
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
+
+extension UIView {
+    
+    func addShadow(offsetHeight: CGFloat = 5) {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: offsetHeight)
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 3
+        clipsToBounds = false
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 class CellDescription{
-
+  
 }
 
 //MARK: - CellDesription Subclasses
@@ -17,10 +17,12 @@ class CellDescription{
 class CellDescriptionWorkButton: CellDescription {
     var work: Work
     var labelText: String
+    var iconName: String
 
-    init(labelText: String, work: Work) {
+    init(labelText: String, work: Work, iconName: String) {
         self.work = work
         self.labelText = labelText
+        self.iconName = iconName
     }
 }
 
@@ -90,9 +92,13 @@ class CellDescriptionToolButton: CellDescription {
     
 class CellDescriptionResult: CellDescription {
     var diameterLabel: String
+    var cuttingSpeedLabel: String
+    var rotationSpeedLabel: String
     
-    init(diameterLabel: String) {
+    init(diameterLabel: String, cuttingSpeedLabel: String, rotationSpeedLabel: String) {
         self.diameterLabel = diameterLabel
+        self.cuttingSpeedLabel = cuttingSpeedLabel
+        self.rotationSpeedLabel = rotationSpeedLabel
     }
 }
 

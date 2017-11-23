@@ -129,9 +129,9 @@ class CalculatorLogic {
     private func setWorkSelectionScreen() {
         cells = [CellDescriptionSeparator(),
                  CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
-                 CellDescriptionWorkButton(labelText: "Bohren", work: Work.drilling),
-                 CellDescriptionWorkButton(labelText: "Drehen", work: Work.lathing),
-                 CellDescriptionWorkButton(labelText: "Fräsen", work: Work.milling)]
+                 CellDescriptionWorkButton(labelText: "Bohren", work: Work.drilling, iconName: "drillingIconBlack"),
+                 CellDescriptionWorkButton(labelText: "Drehen", work: Work.lathing, iconName: "lathingIconBlack"),
+                 CellDescriptionWorkButton(labelText: "Fräsen", work: Work.milling, iconName: "millingIconBlack")]
         sidebarItems.append(SideBarItemDescription(label: "Arbeitsschritt", icon: "drillingIcon"))
     }
     
@@ -290,7 +290,7 @@ class CalculatorLogic {
     
     private func setResultScreen(){
         cells = [CellDescriptionSeparator(),
-                 CellDescriptionResult(diameterLabel: String(describing: currentCalculation.rotationSpeed!)),
+                 CellDescriptionResult(diameterLabel: String(describing: currentCalculation.diameter!), cuttingSpeedLabel: String(describing: currentCalculation.cuttingSpeed!), rotationSpeedLabel: String(describing: currentCalculation.rotationSpeed!)),
                  CellDescriptionRestartButton()]
         
         switch currentCalculation.work! {
