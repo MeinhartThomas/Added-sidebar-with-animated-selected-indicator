@@ -11,6 +11,7 @@ import iosMath
 
 class ResultCell: Cells {
     
-    @IBOutlet weak var formulaLabel: UIView!
+    @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var rotationSpeedLabel: UILabel!
+    @IBOutlet weak var formulaView: UIView!
 }

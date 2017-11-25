@@ -127,8 +127,7 @@ class CalculatorLogic {
 
     
     private func setWorkSelectionScreen() {
-        cells = [CellDescriptionSeparator(),
-                 CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
+        cells = [CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
                  CellDescriptionWorkButton(labelText: "Bohren", work: Work.drilling, iconName: "drillingIconBlack"),
                  CellDescriptionWorkButton(labelText: "Drehen", work: Work.lathing, iconName: "lathingIconBlack"),
                  CellDescriptionWorkButton(labelText: "Fräsen", work: Work.milling, iconName: "millingIconBlack")]
@@ -136,18 +135,16 @@ class CalculatorLogic {
     }
     
     private func setConditionSelectionScreen() {
-        cells = [CellDescriptionSeparator(),
-                 CellDescriptionDescriptionLabel(labelText: "Wähle die Bedingung"),
-                 CellDescriptionConditionButton(labelText: "Optimal", condition: Condition.optimal),
-                 CellDescriptionConditionButton(labelText: "Normal", condition: Condition.normal),
-                 CellDescriptionConditionButton(labelText: "Schlecht", condition: Condition.bad)]
+        cells = [CellDescriptionDescriptionLabel(labelText: "Wähle die Bedingung"),
+                 CellDescriptionConditionButton(labelText: "Optimal", descriptionText: "CNC-Maschine \noptimale Schmierung", condition: Condition.optimal),
+                 CellDescriptionConditionButton(labelText: "Normal", descriptionText: "Werkstätte \nausreichende Schmierung", condition: Condition.normal),
+                 CellDescriptionConditionButton(labelText: "Schlecht", descriptionText: "Baustelle \nunzureichende Schmierung", condition: Condition.bad)]
         sidebarItems[0] = SideBarItemDescription(label: currentCalculation.work!.rawValue, icon: Work.getIconName(work: currentCalculation.work!))
         sidebarItems.append(SideBarItemDescription(label: "Bedingung", icon: "conditionIcon"))
     }
     
     private func setToolSelectionScreen() {
-        cells = [CellDescriptionSeparator(),
-                 CellDescriptionDescriptionLabel(labelText: "Wähle das Werkzeug"),
+        cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Werkzeug"),
                  CellDescriptionToolButton(labelText: "HSS", tool: Tool.HSS),
                  CellDescriptionToolButton(labelText: "HM", tool: Tool.HM)]
         sidebarItems[2] = SideBarItemDescription(label: currentCalculation.workingStep!.rawValue, icon: "workingStepIcon")
@@ -157,8 +154,7 @@ class CalculatorLogic {
     private func setMaterialSelectionScreen(){
         switch currentCalculation.work! {
             case .drilling:
-                cells = [CellDescriptionSeparator(),
-                         CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
+                cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
                          CellDescriptionMaterialButton(labelText: "Stahl bis 500N/mm\u{00B2}", material: Material.steelUnder500),
                          CellDescriptionMaterialButton(labelText: "Stahl über 500N/mm\u{00B2}", material: Material.steelOver500),
                          CellDescriptionMaterialButton(labelText: "Aluminium", material: Material.aluminium),
@@ -171,8 +167,7 @@ class CalculatorLogic {
                     case .schruppen, .schlichten:
                         switch currentCalculation.tool! {
                             case .HSS:
-                                cells = [CellDescriptionSeparator(),
-                                         CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
+                                cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
                                          CellDescriptionMaterialButton(labelText: "Stahl bis 500N/mm\u{00B2}", material: Material.steelUnder500),
                                          CellDescriptionMaterialButton(labelText: "Stahl über 500N/mm\u{00B2}", material: Material.steelOver500),
                                          CellDescriptionMaterialButton(labelText: "Aluminium", material: Material.aluminium),
@@ -181,8 +176,7 @@ class CalculatorLogic {
                                 sidebarItems[3] = SideBarItemDescription(label: currentCalculation.tool!.rawValue, icon: "toolIcon")
                                 sidebarItems.append(SideBarItemDescription(label: "Material", icon: "materialIcon"))
                             case .HM:
-                                cells = [CellDescriptionSeparator(),
-                                         CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
+                                cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
                                          CellDescriptionMaterialButton(labelText: "Stahl bis 500N/mm\u{00B2}", material: Material.steelUnder500),
                                          CellDescriptionMaterialButton(labelText: "Stahl über 500N/mm\u{00B2}", material: Material.steelOver500),
                                          CellDescriptionMaterialButton(labelText: "Aluminium", material: Material.aluminium),
@@ -191,8 +185,7 @@ class CalculatorLogic {
                                 sidebarItems.append(SideBarItemDescription(label: "Material", icon: "materialIcon"))
                     }
                     case .abstechen:
-                        cells = [CellDescriptionSeparator(),
-                                 CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
+                        cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
                                  CellDescriptionMaterialButton(labelText: "Stahl bis 500N/mm\u{00B2}", material: Material.steelUnder500),
                                  CellDescriptionMaterialButton(labelText: "Stahl über 500N/mm\u{00B2}", material: Material.steelOver500),
                                  CellDescriptionMaterialButton(labelText: "Aluminium", material: Material.aluminium),
@@ -201,8 +194,7 @@ class CalculatorLogic {
                         sidebarItems[2] = SideBarItemDescription(label: currentCalculation.workingStep!.rawValue, icon: "workingStepIcon")
                         sidebarItems.append(SideBarItemDescription(label: "Material", icon: "materialIcon"))
                     case .einstechen:
-                        cells = [CellDescriptionSeparator(),
-                                 CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
+                        cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
                                  CellDescriptionMaterialButton(labelText: "Stahl bis 500N/mm\u{00B2}", material: Material.steelUnder500),
                                  CellDescriptionMaterialButton(labelText: "Stahl über 500N/mm\u{00B2}", material: Material.steelOver500)]
                         sidebarItems[2] = SideBarItemDescription(label: currentCalculation.workingStep!.rawValue, icon: "workingStepIcon")
@@ -214,8 +206,7 @@ class CalculatorLogic {
                 case .schruppen, .schlichten:
                     switch currentCalculation.tool! {
                     case .HSS:
-                        cells = [CellDescriptionSeparator(),
-                                 CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
+                        cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
                                  CellDescriptionMaterialButton(labelText: "Stahl bis 500N/mm\u{00B2}", material: Material.steelUnder500),
                                  CellDescriptionMaterialButton(labelText: "Stahl über 500N/mm\u{00B2}", material: Material.steelOver500),
                                  CellDescriptionMaterialButton(labelText: "Aluminium", material: Material.aluminium),
@@ -224,8 +215,7 @@ class CalculatorLogic {
                         sidebarItems[3] = SideBarItemDescription(label: currentCalculation.tool!.rawValue, icon: "toolIcon")
                         sidebarItems.append(SideBarItemDescription(label: "Material", icon: "materialIcon"))
                     case .HM:
-                        cells = [CellDescriptionSeparator(),
-                                 CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
+                        cells = [CellDescriptionDescriptionLabel(labelText: "Wähle das Material"),
                                  CellDescriptionMaterialButton(labelText: "Stahl bis 500N/mm\u{00B2}", material: Material.steelUnder500),
                                  CellDescriptionMaterialButton(labelText: "Stahl über 500N/mm\u{00B2}", material: Material.steelOver500),
                                  CellDescriptionMaterialButton(labelText: "Aluminium", material: Material.aluminium),
@@ -244,8 +234,7 @@ class CalculatorLogic {
             case Work.drilling:
                 break
         case Work.lathing:
-            cells = [CellDescriptionSeparator(),
-                     CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
+            cells = [CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
                      CellDescriptionWorkingStepButton(labelText: "Schlichten", workingStep: WorkingStep.schlichten),
                      CellDescriptionWorkingStepButton(labelText: "Schruppen", workingStep: WorkingStep.schruppen),
                      CellDescriptionWorkingStepButton(labelText: "Abstechen", workingStep: WorkingStep.abstechen),
@@ -253,8 +242,7 @@ class CalculatorLogic {
             sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: "conditionIcon")
             sidebarItems.append(SideBarItemDescription(label: "Arbeitsschritt", icon: "workingStepIcon"))
         case Work.milling:
-            cells = [CellDescriptionSeparator(),
-                     CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
+            cells = [CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
                      CellDescriptionWorkingStepButton(labelText: "Schlichten", workingStep: WorkingStep.schlichten),
                      CellDescriptionWorkingStepButton(labelText: "Schruppen", workingStep: WorkingStep.schruppen)]
             sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: "conditionIcon")
@@ -263,8 +251,7 @@ class CalculatorLogic {
     }
     
     private func setDiameterInputScreen(){
-        cells = [CellDescriptionSeparator(),
-                 CellDescriptionDescriptionLabel(labelText: "Gib den Durchmesser ein:"),
+        cells = [CellDescriptionDescriptionLabel(labelText: "Gib den Durchmesser ein:"),
                  CellDescriptionTextField(),
                  CellDescriptionCalculateButton(labelText: "berechne Drehzahl")]
         
@@ -289,8 +276,7 @@ class CalculatorLogic {
     }
     
     private func setResultScreen(){
-        cells = [CellDescriptionSeparator(),
-                 CellDescriptionResult(diameterLabel: String(describing: currentCalculation.diameter!), cuttingSpeedLabel: String(describing: currentCalculation.cuttingSpeed!), rotationSpeedLabel: String(describing: currentCalculation.rotationSpeed!)),
+        cells = [CellDescriptionResult(diameterLabel: String(describing: currentCalculation.diameter!), cuttingSpeedLabel: String(describing: currentCalculation.cuttingSpeed!), rotationSpeedLabel: String(describing: currentCalculation.rotationSpeed!)),
                  CellDescriptionRestartButton()]
         
         switch currentCalculation.work! {

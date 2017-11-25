@@ -11,5 +11,5 @@ import UIKit
 class ButtonWhiteBigCell: Cells {
     
     @IBOutlet weak var label: UILabel!
-
+    @IBOutlet weak var descriptionLabel: UILabel!
 }

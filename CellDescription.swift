@@ -39,10 +39,12 @@ class CellDescriptionMaterialButton: CellDescription {
 class CellDescriptionConditionButton: CellDescription {
     var condition: Condition
     var labelText: String
+    var descriptionText: String
     
-    init(labelText: String, condition: Condition) {
+    init(labelText: String, descriptionText: String, condition: Condition) {
         self.condition = condition
         self.labelText = labelText
+        self.descriptionText = descriptionText
     }
 }
 
@@ -66,10 +68,6 @@ class CellDescriptionDescriptionLabel: CellDescription {
     init(labelText: String) {
         self.labelText = labelText
     }
-}
-
-class CellDescriptionSeparator: CellDescription {
-
 }
 
 class CellDescriptionCalculateButton: CellDescription {

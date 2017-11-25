@@ -20,8 +20,8 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         tableView.backgroundView = UIImageView(image: UIImage(named: "background main area"))
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 95
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 96
         
         let sideBarSelectedIndicator = CALayer()
         let image = #imageLiteral(resourceName: "sidebar selected indicator").cgImage!
@@ -74,10 +74,6 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.addShadow()
                 return cell
             
-            case _ as CellDescriptionSeparator:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "Separator") as! Separator
-                return cell
-            
             case let cellDescription as CellDescriptionCalculateButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonBlackSmall") as! ButtonBlackSmall
                 cell.label.text = cellDescription.labelText
@@ -93,6 +89,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             case let cellDescription as CellDescriptionConditionButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteBig") as! ButtonWhiteBigCell
                 cell.label.text = cellDescription.labelText
+                cell.descriptionLabel.text = cellDescription.descriptionText
                 cell.addShadow()
                 return cell
             
@@ -119,9 +116,11 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.rotationSpeedLabel.text = "= \(cellDescription.rotationSpeedLabel) U/min"
                 
                 let formula = createFormulaLabel(cuttingSpeed: cellDescription.cuttingSpeedLabel, diameter: cellDescription.diameterLabel)
-                formula.center = cell.formulaLabel.center
-                cell.formulaLabel.addSubview(formula)
-
+                
+                
+                cell.formulaView.addSubview(formula)
+                
+           
                 cell.addShadow()
                 return cell
             
@@ -177,7 +176,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
 
 
             case _ as CellDescriptionCalculateButton:
-                let textFieldDiameter = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldWhite
+                let textFieldDiameter = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldWhite
                 
                 if textFieldDiameter.textField.text!.isEmpty {
                     let alert = UIAlertController(title: "Keinen Durchmesser eingegeben", message: "Gib einen Durchmesser ein", preferredStyle: .alert)
@@ -235,10 +234,13 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //MARK: - IOSMath
     
+   
+    
     public func createFormulaLabel(cuttingSpeed: String, diameter: String) -> MTMathUILabel {
         let formulaLabel: MTMathUILabel = MTMathUILabel()
-        formulaLabel.latex = "\\frac{\\sqrt{1000 \\cdot \(cuttingSpeed)}}{\(diameter) \\cdot \\pi}"
+        formulaLabel.latex = "\\frac{1000 \\cdot \(cuttingSpeed)}{\(diameter) \\cdot \\pi}"
         formulaLabel.fontSize = 40
+        formulaLabel.textAlignment = MTTextAlignment.center
         formulaLabel.sizeToFit()
         return formulaLabel
     }
