@@ -16,6 +16,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var sideBar: UICollectionView!
     weak var sideBarSelectedIndicator: CALayer!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -261,6 +262,15 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             return true
         }
     }
+    
+    @IBAction func saveToFavourites(_ sender: Any) {
+        print("test")
+
+        let tabBar = tabBarController as! TabBarController
+        tabBar.favouritesStore.favourites.append(calculatorLogic.currentCalculation)
+    }
+    
+    
 }
 
 
