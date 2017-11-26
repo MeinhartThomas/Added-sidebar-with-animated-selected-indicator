@@ -114,11 +114,13 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             case let cellDescription as CellDescriptionResult:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Result") as! ResultCell
                 cell.rotationSpeedLabel.text = "= \(cellDescription.rotationSpeedLabel) U/min"
+                cell.cuttingSpeedLabel.text = "= \(cellDescription.cuttingSpeedLabel) m/min"
+                cell.diameterLabel.text = "= \(cellDescription.diameterLabel) mm"
                 
                 let formula = createFormulaLabel(cuttingSpeed: cellDescription.cuttingSpeedLabel, diameter: cellDescription.diameterLabel)
                 
                 
-                cell.formulaView.addSubview(formula)
+                cell.formulaView.addArrangedSubview(formula)
                 
            
                 cell.addShadow()

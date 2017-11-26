@@ -13,5 +13,8 @@ class ResultCell: Cells {
     
     @IBOutlet weak var mainStackView: UIStackView!
     @IBOutlet weak var rotationSpeedLabel: UILabel!
-    @IBOutlet weak var formulaView: UIView!
+    @IBOutlet weak var cuttingSpeedLabel: UILabel!
+    @IBOutlet weak var diameterLabel: UILabel!
+    @IBOutlet weak var formulaView: UIStackView!
+    
 }
