@@ -80,7 +80,7 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    
+
     
         if editingStyle == .delete {
             let favourite = fetchedResultsController.object(at: indexPath)
