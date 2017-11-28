@@ -237,8 +237,6 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     
     //MARK: - IOSMath
     
-   
-    
     public func createFormulaLabel(cuttingSpeed: String, diameter: String) -> MTMathUILabel {
         let formulaLabel: MTMathUILabel = MTMathUILabel()
         formulaLabel.latex = "\\frac{1000 \\cdot \(cuttingSpeed)}{\(diameter) \\cdot \\pi}"
@@ -264,15 +262,9 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func saveToFavourites(_ sender: Any) {
-        print("test")
-
-        let tabBar = tabBarController as! TabBarController
-        tabBar.favouritesStore.favourites.append(calculatorLogic.currentCalculation)
+        Favourite.addNew(calculation: calculatorLogic.currentCalculation)
     }
-    
-    
 }
-
 
 extension UIView {
     
@@ -284,4 +276,3 @@ extension UIView {
         clipsToBounds = false
     }
 }
-

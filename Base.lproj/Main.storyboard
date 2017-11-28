@@ -20,11 +20,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E03-Z4-fSG" userLabel="Favourites Table View">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="E03-Z4-fSG" userLabel="Favourites Table View">
                                 <rect key="frame" x="0.0" y="64" width="414" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="favouriteCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favouriteCell" rowHeight="105" id="8Gq-tH-Zhn" customClass="FavouriteCell" customModule="DrillMe" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="favouriteCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="favouriteCell" rowHeight="105" id="8Gq-tH-Zhn" customClass="FavouriteCell" customModule="DrillMe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="105"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Gq-tH-Zhn" id="tem-pk-NaZ">
@@ -37,7 +37,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="button white small" translatesAutoresizingMaskIntoConstraints="NO" id="a6K-ss-6qG">
                                                             <rect key="frame" x="0.0" y="0.0" width="354" height="74.666666666666671"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="a6K-ss-6qG" secondAttribute="height" multiplier="6:1" priority="999" id="e5I-hN-l5U"/>
+                                                                <constraint firstAttribute="width" secondItem="a6K-ss-6qG" secondAttribute="height" multiplier="177:37" priority="999" id="Vd8-Gb-MAb"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -45,22 +45,32 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Q9j-hs-ExY" userLabel="Labels">
                                                     <rect key="frame" x="47.666666666666657" y="26.333333333333329" width="318.66666666666674" height="52"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drehen Schule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5he-vd-fM6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="208.66666666666666" height="52"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="420 U/min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5db-Zo-IKW">
-                                                            <rect key="frame" x="208.66666666666663" y="0.0" width="110" height="52"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="dqt-AV-Apy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="197.33333333333334" height="52"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drehen Schule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5he-vd-fM6">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="197.33333333333334" height="31"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqX-FW-Ti2">
+                                                                    <rect key="frame" x="0.0" y="31" width="197.33333333333334" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="420 U/min" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5db-Zo-IKW">
+                                                            <rect key="frame" x="197.33333333333334" y="0.0" width="121.33333333333334" height="52"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Udt-5A-VXe" secondAttribute="bottom" constant="15" id="4Tr-kC-sGt"/>
                                                 <constraint firstItem="Q9j-hs-ExY" firstAttribute="centerX" secondItem="Udt-5A-VXe" secondAttribute="centerX" id="8xr-uN-BHr"/>
@@ -69,15 +79,19 @@
                                                 <constraint firstItem="Udt-5A-VXe" firstAttribute="top" secondItem="tem-pk-NaZ" secondAttribute="top" constant="15" id="IQz-QZ-Vbc"/>
                                                 <constraint firstItem="Udt-5A-VXe" firstAttribute="leading" secondItem="tem-pk-NaZ" secondAttribute="leading" constant="30" id="T1U-c0-kaI"/>
                                                 <constraint firstItem="Q9j-hs-ExY" firstAttribute="height" secondItem="a6K-ss-6qG" secondAttribute="height" multiplier="0.7" id="aIr-6C-XQ4"/>
-                                                <constraint firstItem="Q9j-hs-ExY" firstAttribute="width" secondItem="Udt-5A-VXe" secondAttribute="width" multiplier="0.9" id="tnU-02-YUk"/>
+                                                <constraint firstItem="Q9j-hs-ExY" firstAttribute="width" secondItem="a6K-ss-6qG" secondAttribute="width" multiplier="0.9" id="kl2-gY-NlD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="date" destination="gqX-FW-Ti2" id="iMI-RG-RKE"/>
                                             <outlet property="name" destination="5he-vd-fM6" id="0VZ-tI-Nhs"/>
                                             <outlet property="rotationSpeed" destination="5db-Zo-IKW" id="BZ5-c6-B7J"/>
+                                            <segue destination="AMP-qG-Ddr" kind="show" id="cSd-Ag-BwU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="ziV-x7-8bk" id="7cM-sg-wwm"/>
                                     <outlet property="delegate" destination="ziV-x7-8bk" id="mCy-hu-JQX"/>
@@ -102,10 +116,36 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="-589.4021739130435"/>
         </scene>
-        <!--Einstellungen-->
+        <!--Favourite-->
+        <scene sceneID="GIq-4g-q9u">
+            <objects>
+                <viewController id="AMP-qG-Ddr" userLabel="Favourite" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3LG-eu-q4m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background main area" translatesAutoresizingMaskIntoConstraints="NO" id="2jC-mP-Xwl">
+                                <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2jC-mP-Xwl" firstAttribute="leading" secondItem="enS-hs-4VF" secondAttribute="leading" id="bSf-Wb-tTh"/>
+                            <constraint firstItem="enS-hs-4VF" firstAttribute="trailing" secondItem="2jC-mP-Xwl" secondAttribute="trailing" id="bjq-Le-2He"/>
+                            <constraint firstItem="enS-hs-4VF" firstAttribute="bottom" secondItem="2jC-mP-Xwl" secondAttribute="bottom" id="nhU-94-Jy2"/>
+                            <constraint firstItem="2jC-mP-Xwl" firstAttribute="top" secondItem="enS-hs-4VF" secondAttribute="top" id="oap-JQ-mbf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="enS-hs-4VF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHn-zD-FYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884" y="-582"/>
+        </scene>
+        <!--Settings-->
         <scene sceneID="ie2-Gm-KM2">
             <objects>
-                <viewController id="EI6-bl-cDP" userLabel="Einstellungen" sceneMemberID="viewController">
+                <viewController id="EI6-bl-cDP" userLabel="Settings" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SnB-tc-2eR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,7 +286,7 @@
                                     <constraint firstItem="sZm-2E-ns5" firstAttribute="height" secondItem="oeg-bT-1D5" secondAttribute="height" id="lmd-bc-vF0"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="31R-Sh-Vl6">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="31R-Sh-Vl6">
                                 <rect key="frame" x="75" y="64" width="339" height="623"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -731,10 +771,10 @@
             </objects>
             <point key="canvasLocation" x="139.13043478260872" y="-1419.2934782608697"/>
         </scene>
-        <!--Rechner-->
+        <!--Calculator Navigation Controller-->
         <scene sceneID="bA5-ul-jXd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PW1-Ln-rfs" customClass="NavigationController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PW1-Ln-rfs" userLabel="Calculator Navigation Controller" customClass="NavigationController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Rechner" image="calculator icon" id="HcM-I8-WP8" userLabel="Rechner"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Emk-RT-wLs">
@@ -750,10 +790,10 @@
             </objects>
             <point key="canvasLocation" x="-718" y="-1419"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Favourites Navigation Controller-->
         <scene sceneID="RMl-W6-2L1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ocJ-pI-Cjb" customClass="NavigationController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ocJ-pI-Cjb" userLabel="Favourites Navigation Controller" customClass="NavigationController" customModule="DrillMe" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="FRv-eL-ZtZ" userLabel="Favouriten"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dg2-Rq-bSI">

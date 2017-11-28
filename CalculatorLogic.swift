@@ -16,7 +16,7 @@ enum CellType: String {
     case buttonWhiteBig, buttonWhiteSmall, buttonBlackSmall, descriptionLabel, textFieldWhite, separator
 }
 
-enum Material: String {
+enum Material: String, Codable {
     case steelUnder500 = "Stahl < 500"
     case steelOver500 = "Stahl > 500"
     case brassOrBronze = "Messing / Bronze"
@@ -24,13 +24,13 @@ enum Material: String {
     case plastic = "Kunststoff"
 }
 
-enum Condition: String {
+enum Condition: String, Codable {
     case optimal = "Optimal"
     case normal = "Normal"
     case bad = "Schlecht"
 }
 
-enum Work: String{
+enum Work: String, Codable {
     case drilling = "Bohren"
     case lathing = "Drehen"
     case milling = "Fräsen"
@@ -48,14 +48,14 @@ enum Work: String{
     }
 }
 
-enum WorkingStep: String {
+enum WorkingStep: String, Codable {
     case schlichten = "Schlichten"
     case schruppen = "Schruppen"
     case abstechen = "Abstechen"
     case einstechen = "Einstechen"
 }
 
-enum Tool: String {
+enum Tool: String, Codable {
     case HSS = "HSS"
     case HM = "HM"
 }

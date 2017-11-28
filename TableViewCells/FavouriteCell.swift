@@ -12,4 +12,5 @@ class FavouriteCell: Cells {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var rotationSpeed: UILabel!
+    @IBOutlet weak var date: UILabel!
 }

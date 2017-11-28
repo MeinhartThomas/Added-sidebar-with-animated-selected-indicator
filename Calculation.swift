@@ -26,6 +26,8 @@ class Calculation: NSObject, NSCoding{
         
     }
     
+
+    
     //MARK: - rotation speed calculation methods
     
     func getRotationSpeedAndForwardSpeed(){
@@ -39,7 +41,41 @@ class Calculation: NSObject, NSCoding{
         return Int(Double(1000 * cuttingSpeed)/(self.diameter! * Double.pi))
     }
     
+    
     func encode(with aCoder: NSCoder) {
+//        if let work = work {
+//            aCoder.encode(work, forKey: "work")
+//        }
+//        if let tool = tool{
+//            aCoder.encode(tool, forKey: "tool")
+//        }
+//        if let condition = condition {
+//            aCoder.encode(condition, forKey: "condition")
+//        }
+//        if let workingStep = workingStep {
+//            aCoder.encode(workingStep, forKey: "workingStep")
+//        }
+//        if let material = material {
+//            aCoder.encode(material, forKey: "material")
+//        }
+//        if let diameter = diameter {
+//            aCoder.encode(diameter, forKey: "diameter")
+//        }
+//        if let cuttingSpeed = cuttingSpeed {
+//            aCoder.encode(cuttingSpeed, forKey: "cuttingSpeed")
+//        }
+//        if let rotationSpeed = rotationSpeed{
+//            aCoder.encode(rotationSpeed, forKey: "rotationSpeed")
+//        }
+//        if let forwardSpeed = forwardSpeed{
+//            aCoder.encode(forwardSpeed, forKey: "forwardSpeed")
+//        }
+//        if let name = name {
+//            aCoder.encode(name, forKey: "name")
+//        }
+//        if let notes = notes{
+//            aCoder.encode(notes, forKey: "notes")
+//        }
         aCoder.encode(work, forKey: "work")
         aCoder.encode(tool, forKey: "tool")
         aCoder.encode(condition, forKey: "condition")
@@ -54,6 +90,14 @@ class Calculation: NSObject, NSCoding{
     }
     
     required init?(coder aDecoder: NSCoder) {
+        
+//        if let work = aDecoder.decodeObject(forKey: "work") as? Work {
+//            self.work = work
+//        } else {
+//            self.work = nil
+//        }
+        
+        
         work = aDecoder.decodeObject(forKey: "work") as? Work
         tool = aDecoder.decodeObject(forKey: "tool") as? Tool
         condition = aDecoder.decodeObject(forKey: "condition") as? Condition
