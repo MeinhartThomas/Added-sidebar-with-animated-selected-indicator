@@ -40,9 +40,6 @@ class FavouritesStore: NSObject{
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-        
-        
-        
         return container
     }()
     
@@ -61,52 +58,4 @@ class FavouritesStore: NSObject{
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    //var favourites = [Calculation]()
-    
-//    let itemArchiveURL: URL = {
-//        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-//        let documentDirectory = documentsDirectories.first!
-//        return documentDirectory.appendingPathComponent("favourites.archive")
-//    }()
-//
-//    init() {
-//        if let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Calculation] {
-//            favourites = archivedItems
-//        }
-//    }
-//
-//    func saveChanges() -> Bool {
-//        print("Saving favourites to: \(itemArchiveURL.path)")
-//        return NSKeyedArchiver.archiveRootObject(favourites, toFile: itemArchiveURL.path)
-//    }
-//
-//    func addFavourite(calculation: Calculation){
-//        favourites.append(calculation)
-//    }
-//
-//    func removeFavourite(calculation: Calculation){
-//        if let index = favourites.index(of: calculation){
-//            favourites.remove(at: index)
-//        }
-//    }
-//
-//    func moveFavourite(from fromIndex: Int, to toIndex: Int){
-//        if fromIndex == toIndex {
-//            return
-//        }
-//
-//        let movedFavourite = favourites[fromIndex]
-//        favourites.remove(at: fromIndex)
-//        favourites.insert(movedFavourite, at: toIndex)
-//    }
 }

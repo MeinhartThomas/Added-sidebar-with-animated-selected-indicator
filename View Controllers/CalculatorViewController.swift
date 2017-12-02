@@ -15,6 +15,8 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sideBar: UICollectionView!
     weak var sideBarSelectedIndicator: CALayer!
+    weak var alertSaveButton: UIAlertAction?
+    weak var textFieldFavouriteName: UITextField?
     
     
     override func viewDidLoad() {
@@ -72,44 +74,37 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteBigWithIcon") as! ButtonWhiteBigWithIconCell
                 cell.label.text = cellDescription.labelText
                 cell.icon.image = UIImage(named: cellDescription.iconName)
-                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionCalculateButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonBlackSmall") as! ButtonBlackSmall
                 cell.label.text = cellDescription.labelText
-                cell.addShadow()
                 return cell
             
             case _ as CellDescriptionTextField:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldWhite") as! TextFieldWhite
                 cell.textField.becomeFirstResponder()
-                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionConditionButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteBig") as! ButtonWhiteBigCell
                 cell.label.text = cellDescription.labelText
                 cell.descriptionLabel.text = cellDescription.descriptionText
-                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionMaterialButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteSmall") as! ButtonWhiteSmallCell
                 cell.label.text = cellDescription.labelText
-                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionWorkingStepButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteSmall") as! ButtonWhiteSmallCell
                 cell.label.text = cellDescription.labelText
-                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionToolButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteSmall") as! ButtonWhiteSmallCell
                 cell.label.text = cellDescription.labelText
-                cell.addShadow()
                 return cell
             
             case let cellDescription as CellDescriptionResult:
@@ -119,12 +114,14 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.diameterLabel.text = "= \(cellDescription.diameterLabel) mm"
                 
                 let formula = createFormulaLabel(cuttingSpeed: cellDescription.cuttingSpeedLabel, diameter: cellDescription.diameterLabel)
-                
+
+                //Delete formula from last calculation
+                if !cell.formulaView.arrangedSubviews.isEmpty {
+                    cell.formulaView.arrangedSubviews[0].removeFromSuperview()
+                }
                 
                 cell.formulaView.addArrangedSubview(formula)
-                
            
-                cell.addShadow()
                 return cell
             
             case _ as CellDescriptionRestartButton:
@@ -205,6 +202,9 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    
+  
+    
     //MARK: - CollectionView methods
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -262,12 +262,36 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func saveToFavourites(_ sender: Any) {
-        Favourite.addNew(calculation: calculatorLogic.currentCalculation)
+        
+        
+        let ac = UIAlertController(title: "Name für Favourit", message: "Gib einen Namen für den Favouriten ein:", preferredStyle: .alert)
+        ac.addTextField(configurationHandler: {(textfield: UITextField) -> Void in
+            textfield.placeholder = "Favouritenname"
+            textfield.addTarget(self, action: #selector(self.checkTextFieldFavouriteName), for: .editingChanged)
+            self.textFieldFavouriteName = textfield
+        })
+        
+        let saveButton = UIAlertAction(title: "Speichern", style: .default, handler: {(alertAction: UIAlertAction) -> Void in
+            self.calculatorLogic.currentCalculation.name = self.textFieldFavouriteName?.text
+            Favourite.addNew(calculation: self.calculatorLogic.currentCalculation)
+
+        })
+        saveButton.isEnabled = false
+        self.alertSaveButton = saveButton
+        
+        ac.addAction(saveButton)
+        ac.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
+        self.present(ac, animated: true, completion: nil)
+        
     }
+    
+    @objc func checkTextFieldFavouriteName(_ sender: UITextField) {
+        self.alertSaveButton?.isEnabled = !(sender.text ?? "").isEmpty
+    }
+    
 }
 
 extension UIView {
-    
     func addShadow(offsetHeight: CGFloat = 5) {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: offsetHeight)

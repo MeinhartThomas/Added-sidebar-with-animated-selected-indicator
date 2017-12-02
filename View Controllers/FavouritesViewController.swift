@@ -20,6 +20,26 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         navigationItem.leftBarButtonItem = editButtonItem
     }
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "showFavouriteDetails"?:
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let favourite = fetchedResultsController.object(at: indexPath)
+                //print(favourite.name!)
+
+                
+
+                let favouriteDetailViewController = segue.destination as! FavouriteDetailViewController
+                favouriteDetailViewController.favourite = favourite
+                
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
+    }
     
     
     func initializeFetchedResultsController() {
@@ -72,7 +92,7 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
         dateFormatter.dateFormat = "dd.MM.yyyy"
         
         
-        cell.name.text = favourite.name ?? favourite.work
+        cell.name.text = favourite.name
         cell.rotationSpeed.text = "\(String(favourite.rotationSpeed)) U/min"
         cell.date.text = dateFormatter.string(from: favourite.date)
         
@@ -81,44 +101,13 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
-    
         if editingStyle == .delete {
             let favourite = fetchedResultsController.object(at: indexPath)
             FavouritesStore.managedObjectContext.delete(favourite)
             FavouritesStore.saveContext()
         }
-    
-    
-//        //If the table view is asking to commit a delete command...
-//        if editingStyle == .delete {
-//            let tabBar = tabBarController as! TabBarController
-//            let favouriteStore = tabBar.favouritesStore!
-//            let favourite = FavouritesStore.managedObjectContext[indexPath.row]
-//            let favourite = favouriteStore.favourites[indexPath.row]
-//
-//            let title = "Lösche \(String(describing: favourite.name))"
-//            let message = "Bist du sicher das du diesen Favouriten löschen möchtest?"
-//
-//            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
-//
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel , handler: nil)
-//            ac.addAction(cancelAction)
-//
-//            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
-//                //Remove the item from the store
-//                favouriteStore.removeFavourite(calculation: favourite)
-//
-//                //Also remove that row from the table view with an animation
-//                self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//
-//            })
-//
-//            ac.addAction(deleteAction)
-//
-//            //Present the alert controller
-//            present(ac, animated: true, completion: nil)
-//        }
     }
+    
     
     // MARK: - FetchedResultController Updates
     
