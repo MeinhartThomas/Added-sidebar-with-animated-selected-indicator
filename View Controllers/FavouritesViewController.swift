@@ -28,13 +28,8 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
         case "showFavouriteDetails"?:
             if let indexPath = tableView.indexPathForSelectedRow {
                 let favourite = fetchedResultsController.object(at: indexPath)
-                //print(favourite.name!)
-
-                
-
                 let favouriteDetailViewController = segue.destination as! FavouriteDetailViewController
                 favouriteDetailViewController.favourite = favourite
-                
             }
         default:
             preconditionFailure("Unexpected segue identifier.")
@@ -45,7 +40,7 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     func initializeFetchedResultsController() {
         let request = NSFetchRequest<Favourite>(entityName: String(describing: Favourite.self))
         
-        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
         fetchedResultsController = NSFetchedResultsController<Favourite>(fetchRequest: request, managedObjectContext: FavouritesStore.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -90,7 +85,6 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
         let favourite = fetchedResultsController.object(at: indexPath)
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        
         
         cell.name.text = favourite.name
         cell.rotationSpeed.text = "\(String(favourite.rotationSpeed)) U/min"

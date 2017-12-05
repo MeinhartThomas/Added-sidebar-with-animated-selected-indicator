@@ -240,7 +240,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     public func createFormulaLabel(cuttingSpeed: String, diameter: String) -> MTMathUILabel {
         let formulaLabel: MTMathUILabel = MTMathUILabel()
         formulaLabel.latex = "\\frac{1000 \\cdot \(cuttingSpeed)}{\(diameter) \\cdot \\pi}"
-        formulaLabel.fontSize = 40
+        formulaLabel.fontSize = 20
         formulaLabel.textAlignment = MTTextAlignment.center
         formulaLabel.sizeToFit()
         return formulaLabel

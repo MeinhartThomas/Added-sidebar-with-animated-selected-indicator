@@ -23,16 +23,8 @@ class FavouriteDetailViewController: UIViewController {
     @IBOutlet weak var forwardSpeed: UILabel!
     @IBOutlet weak var lubrication: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
-    @IBAction func rotationSpeedLabelChanged(_ sender: Any) {
-        saveButton.isEnabled = true
-    }
     @IBOutlet weak var rotationSpeed: UITextField!
     var favourite: Favourite!
-    
-    @IBAction func saveChanges(_ sender: Any) {
-        
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +53,18 @@ class FavouriteDetailViewController: UIViewController {
         forwardSpeed.text = "\(favourite.forwardSpeed)"
         rotationSpeed.text = String(describing: favourite.rotationSpeed)
         //lubrication.text = favourite.lubricaton
-        //rotationSpeed.text = "\(favourite.rotationSpeed)"
-        //rotationSpeed.text = "\(favourite.rotationSpeed)"
+    }
+    
+    
+    @IBAction func rotationSpeedLabelChanged(_ sender: Any) {
+        saveButton.isEnabled = true
+    }
+    
+    @IBAction func saveChanges(_ sender: Any) {
+        let value = Int(rotationSpeed.text!)
+        favourite.setValue(value, forKey: "rotationSpeed")
+        FavouritesStore.saveContext()
+        rotationSpeed.resignFirstResponder()
+        saveButton.isEnabled = false
     }
 }
