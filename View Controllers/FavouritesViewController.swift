@@ -60,6 +60,7 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
 //        tableView.rowHeight = UITableViewAutomaticDimension
 //        tableView.estimatedRowHeight = 105
         tableView.reloadData()
+        navigationItem.leftBarButtonItem?.title = "Löschen"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +71,14 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        tableView.setEditing(editing, animated: true)
+        
+        if(self.tableView.isEditing == true){
+            self.tableView.setEditing(false, animated: true)
+            self.navigationItem.leftBarButtonItem?.title = "Löschen"
+        }else{
+            self.tableView.setEditing(true, animated: true)
+            self.navigationItem.leftBarButtonItem?.title = "Fertig"
+        }
     }
     
     // MARK: - UITableViewDataSource methods
@@ -94,11 +102,18 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let favourite = fetchedResultsController.object(at: indexPath)
 
         if editingStyle == .delete {
-            let favourite = fetchedResultsController.object(at: indexPath)
-            FavouritesStore.managedObjectContext.delete(favourite)
-            FavouritesStore.saveContext()
+            let ac = UIAlertController(title: "Löschen", message: "Bist du sicher das du den Favourite '\(favourite.name!)' löschen möchtest?", preferredStyle: .actionSheet)
+            ac.addAction(UIAlertAction(title: "Ja", style: .default, handler: {(aa: UIAlertAction) -> Void in
+                FavouritesStore.managedObjectContext.delete(favourite)
+                FavouritesStore.saveContext()
+                
+            }))
+                
+            ac.addAction(UIAlertAction(title: "Nein", style: .cancel, handler: nil))
+            self.present(ac, animated: true, completion: nil)
         }
     }
     

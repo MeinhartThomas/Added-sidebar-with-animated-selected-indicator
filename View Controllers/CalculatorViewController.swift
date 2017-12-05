@@ -40,6 +40,10 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         let font = UIFont.systemFont(ofSize: 28, weight: .light)
         navigationBarTitle.font = font
         navigationItem.titleView = navigationBarTitle
+        navigationItem.rightBarButtonItem?.title = "Speichern"
+        navigationItem.rightBarButtonItem = nil
+        
+        //HERE WE GOOOOOO
     }
     
     @IBAction func tableTapped(_ sender: UITapGestureRecognizer) {
