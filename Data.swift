@@ -8,6 +8,32 @@
 
 import Foundation
 
+
+//class Lubrication{
+//    static func getLubrication(work: Work, workingStep: WorkingStep, material: Material) -> String{
+//        switch work {
+//        case .drilling:
+//            switch material {
+//            case .steelOver500: return "Emulsion, Schneideöl"
+//            case .steelUnder500: return "trocken, Emulsion"
+//            case .brassOrBronze: return "trocken, Emulsion, Schneideöl"
+//            case .aluminium: return "Schneideöl, Emulsion"
+//            case .
+//            }
+//        case .lathing:
+//            switch workingStep {
+//                case .schlichten
+//
+//                case .schruppen
+//            }
+//
+//
+//        case .milling:
+//            return
+//        }
+//    }
+//}
+
 class CuttingAndForwardSpeed{
     
     static func getValuesFor(work: Work, workingStep: WorkingStep?, tool: Tool?, material: Material) -> (cuttingSpeed: Int?, forwardSpeed: Double?) {

@@ -29,6 +29,7 @@ extension Favourite {
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
     @NSManaged public var date: Date
+    @NSManaged public var lubcrication: String?
     
 
 }

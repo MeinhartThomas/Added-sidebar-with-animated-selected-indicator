@@ -37,13 +37,12 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let navigationBarTitle = UILabel()
         navigationBarTitle.text = "Drehzahlrechner"
-        let font = UIFont.systemFont(ofSize: 28, weight: .light)
+        //navigationBarTitle.textColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+        let font = UIFont.systemFont(ofSize: 24, weight: .light)
         navigationBarTitle.font = font
         navigationItem.titleView = navigationBarTitle
-        navigationItem.rightBarButtonItem?.title = "Speichern"
         navigationItem.rightBarButtonItem = nil
         
-        //HERE WE GOOOOOO
     }
     
     @IBAction func tableTapped(_ sender: UITapGestureRecognizer) {
@@ -67,6 +66,8 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cellDescriptionCellToDisplay = calculatorLogic.cells[indexPath.row]
+        
+        navigationItem.rightBarButtonItem = nil
         
         switch cellDescriptionCellToDisplay {
             case let cellDescription as CellDescriptionDescriptionLabel:
@@ -130,6 +131,13 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             
             case _ as CellDescriptionRestartButton:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RestartButton") as! RestartButton
+                
+                //Add Save To Favourites Button
+                let button = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(saveToFavourites))
+                button.title = "Speichern"
+                button.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+                navigationItem.rightBarButtonItem = button
+                
                 cell.addShadow()
                 return cell
             

@@ -13,6 +13,7 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBar.setBackgroundImage(UIImage(named: "background header"), for: .default)
+
         //navigationBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 150)
     }
 }

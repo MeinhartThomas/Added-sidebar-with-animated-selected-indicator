@@ -11,7 +11,6 @@ import UIKit
 class FavouriteDetailViewController: UIViewController {
 
     @IBOutlet weak var cardView: UIView!
-    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var work: UILabel!
@@ -24,6 +23,7 @@ class FavouriteDetailViewController: UIViewController {
     @IBOutlet weak var lubrication: UILabel!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var rotationSpeed: UITextField!
+    
     var favourite: Favourite!
     
     override func viewDidLoad() {
@@ -36,6 +36,7 @@ class FavouriteDetailViewController: UIViewController {
         maskLayer.path = path.cgPath
         cardView.layer.mask = maskLayer
         saveButton.isEnabled = false
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +54,8 @@ class FavouriteDetailViewController: UIViewController {
         forwardSpeed.text = "\(favourite.forwardSpeed)"
         rotationSpeed.text = String(describing: favourite.rotationSpeed)
         //lubrication.text = favourite.lubricaton
+        navigationItem.backBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+
     }
     
     

@@ -14,11 +14,37 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     var fetchedResultsController:NSFetchedResultsController<Favourite>!
 
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         navigationItem.leftBarButtonItem = editButtonItem
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let navigationBarTitle = UILabel()
+        navigationBarTitle.text = "Favoriten"
+        let font = UIFont.systemFont(ofSize: 24, weight: .light)
+        navigationBarTitle.font = font
+        navigationItem.titleView = navigationBarTitle
+        
+        initializeFetchedResultsController()
+        tableView.backgroundView = UIImageView(image: UIImage(named: "background main area"))
+        //        tableView.rowHeight = UITableViewAutomaticDimension
+        //        tableView.estimatedRowHeight = 105
+        tableView.reloadData()
+        navigationItem.leftBarButtonItem?.title = "Löschen"
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+        backButton.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
 
     
@@ -52,22 +78,7 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        initializeFetchedResultsController()
-        tableView.backgroundView = UIImageView(image: UIImage(named: "background main area"))
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 105
-        tableView.reloadData()
-        navigationItem.leftBarButtonItem?.title = "Löschen"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-    }
+   
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
