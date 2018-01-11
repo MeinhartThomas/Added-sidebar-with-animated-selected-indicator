@@ -30,6 +30,9 @@ class FavouriteDetailViewController: UIViewController {
     @IBOutlet weak var lubrication: UILabel!
     @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var editButton: UIButton!
+    
+    
     
     var favourite: Favourite!
     
@@ -49,7 +52,14 @@ class FavouriteDetailViewController: UIViewController {
         maskLayerBlack.path = pathForBlack.cgPath
         blackCardView.layer.mask = maskLayerBlack
         
-        //button
+        
+        //backButton
+        let  backButtonItem = UIBarButtonItem()
+        backButtonItem.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+        backButtonItem.title = "Zurück"
+        navigationItem.backBarButtonItem = backButtonItem
+        
+
         saveButton.isEnabled = false
         navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
     }
@@ -57,21 +67,35 @@ class FavouriteDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        //FavouritesStore.saveContext()
         
         //filling labels
         name.text = favourite.name
         date.text = dateFormatter.string(from: favourite.date)
         //work.text = favourite.work
-        condition.text = condition.text
+        
         tool.text = favourite.tool
+        if favourite.work == "Bohren" {
+            tool.superview?.removeFromSuperview()
+        }
+        condition.text = condition.text
         material.text = favourite.material
         diameter.text = "\(favourite.diameter)mm"
         cuttingSpeed.text = "\(favourite.cuttingSpeed)"
         forwardSpeed.text = "\(favourite.forwardSpeed)"
         rotationSpeed.text = String(describing: favourite.rotationSpeed)
         //lubrication.text = favourite.lubricaton
-        notes.text = favourite.notes
+        
+        if favourite.notes == "" {
+            notes.text = "noch keine Notiz hinzugefügt"
+            editButton.setTitle("hinzufügen", for: editButton.state)
+        } else {
+            notes.text = favourite.notes
+            editButton.setTitle("bearbeiten", for: editButton.state)
+
+        }
+
+        
+        
         navigationItem.backBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
 
     }

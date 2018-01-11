@@ -14,7 +14,7 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     var fetchedResultsController:NSFetchedResultsController<Favourite>!
 
-    @IBOutlet weak var backButton: UIBarButtonItem!
+    //@IBOutlet weak var backButton: UIBarButtonItem!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,20 +25,30 @@ class FavouritesViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //FetchedResultsController
+        initializeFetchedResultsController()
+        
+        //NavigationBar title
         let navigationBarTitle = UILabel()
         navigationBarTitle.text = "Favoriten"
+        navigationBarTitle.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
         let font = UIFont.systemFont(ofSize: 24, weight: .light)
         navigationBarTitle.font = font
         navigationItem.titleView = navigationBarTitle
         
-        initializeFetchedResultsController()
-        tableView.backgroundView = UIImageView(image: UIImage(named: "background main area"))
-        //        tableView.rowHeight = UITableViewAutomaticDimension
-        //        tableView.estimatedRowHeight = 105
-        tableView.reloadData()
+        //delete Button
         navigationItem.leftBarButtonItem?.title = "Löschen"
         navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
-        backButton.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+        
+        let  backButtonItem = UIBarButtonItem()
+        backButtonItem.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+        backButtonItem.title = "Zurück"
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        //tableView
+        tableView.backgroundView = UIImageView(image: UIImage(named: "background main area"))
+        tableView.reloadData()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
