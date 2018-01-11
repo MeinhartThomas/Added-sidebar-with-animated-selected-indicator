@@ -26,7 +26,6 @@ class Calculation: NSObject, NSCoding{
         
     }
     
-
     
     //MARK: - rotation speed calculation methods
     

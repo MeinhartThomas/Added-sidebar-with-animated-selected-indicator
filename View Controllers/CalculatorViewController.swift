@@ -251,7 +251,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     
     public func createFormulaLabel(cuttingSpeed: String, diameter: String) -> MTMathUILabel {
         let formulaLabel: MTMathUILabel = MTMathUILabel()
-        formulaLabel.latex = "\\frac{1000 \\cdot \(cuttingSpeed)}{\(diameter) \\cdot \\pi}"
+        formulaLabel.latex = "\\frac{1000 \\cdot \(cuttingSpeed)\\;m/min}{\(diameter)\\;mm \\cdot \\pi}"
         formulaLabel.fontSize = 20
         formulaLabel.textAlignment = MTTextAlignment.center
         formulaLabel.sizeToFit()
@@ -275,7 +275,6 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func saveToFavourites(_ sender: Any) {
         
-        
         let ac = UIAlertController(title: "Name für Favourit", message: "Gib einen Namen für den Favouriten ein:", preferredStyle: .alert)
         ac.addTextField(configurationHandler: {(textfield: UITextField) -> Void in
             textfield.placeholder = "Favouritenname"
@@ -294,7 +293,6 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         ac.addAction(saveButton)
         ac.addAction(UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil))
         self.present(ac, animated: true, completion: nil)
-        
     }
     
     @objc func checkTextFieldFavouriteName(_ sender: UITextField) {

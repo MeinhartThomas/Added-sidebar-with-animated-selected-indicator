@@ -10,9 +10,16 @@ import UIKit
 
 class FavouriteDetailViewController: UIViewController {
 
+    // CardView
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var blackCardView: UIView!
+    
+    // Labels white
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var date: UILabel!
+    @IBOutlet weak var rotationSpeed: UITextField!
+    
+    //Labels black
     @IBOutlet weak var work: UILabel!
     @IBOutlet weak var condition: UILabel!
     @IBOutlet weak var tool: UILabel!
@@ -21,20 +28,28 @@ class FavouriteDetailViewController: UIViewController {
     @IBOutlet weak var cuttingSpeed: UILabel!
     @IBOutlet weak var forwardSpeed: UILabel!
     @IBOutlet weak var lubrication: UILabel!
+    @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var rotationSpeed: UITextField!
     
     var favourite: Favourite!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //rounded Corners
+        let maskLayerWhite = CAShapeLayer()
         let path = UIBezierPath(roundedRect:cardView.bounds,
                                 byRoundingCorners:[.topRight, .bottomLeft],
                                 cornerRadii: CGSize(width: 20, height:  20))
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = path.cgPath
-        cardView.layer.mask = maskLayer
+        maskLayerWhite.path = path.cgPath
+        cardView.layer.mask = maskLayerWhite
+        
+        let maskLayerBlack = CAShapeLayer()
+        let pathForBlack = UIBezierPath(roundedRect: blackCardView.bounds, byRoundingCorners: [.topRight, .bottomLeft], cornerRadii: CGSize(width: 20, height:  20))
+        maskLayerBlack.path = pathForBlack.cgPath
+        blackCardView.layer.mask = maskLayerBlack
+        
+        //button
         saveButton.isEnabled = false
         navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
     }
@@ -42,10 +57,12 @@ class FavouriteDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
+        //FavouritesStore.saveContext()
         
+        //filling labels
         name.text = favourite.name
         date.text = dateFormatter.string(from: favourite.date)
-        work.text = favourite.work
+        //work.text = favourite.work
         condition.text = condition.text
         tool.text = favourite.tool
         material.text = favourite.material
@@ -54,6 +71,7 @@ class FavouriteDetailViewController: UIViewController {
         forwardSpeed.text = "\(favourite.forwardSpeed)"
         rotationSpeed.text = String(describing: favourite.rotationSpeed)
         //lubrication.text = favourite.lubricaton
+        notes.text = favourite.notes
         navigationItem.backBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
 
     }
@@ -62,6 +80,17 @@ class FavouriteDetailViewController: UIViewController {
     @IBAction func rotationSpeedLabelChanged(_ sender: Any) {
         saveButton.isEnabled = true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "editNotes"?:
+                let notesController = segue.destination as! NotesViewController
+                    notesController.favourite = favourite
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
+    }
+    
     
     @IBAction func saveChanges(_ sender: Any) {
         let value = Int(rotationSpeed.text!)
