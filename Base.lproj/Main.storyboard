@@ -584,45 +584,58 @@
                                                         </imageView>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Rxu-Yn-DuU">
-                                                    <rect key="frame" x="30" y="28.666666666666671" width="279" height="63"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pl4-2a-IjL">
+                                                    <rect key="frame" x="50" y="28.333333333333329" width="239" height="63"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optimal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZJ-Kx-0Zy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="279" height="29.666666666666668"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
-                                                            <color key="textColor" red="0.1647058824" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNC-Maschine optimale Schierung" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-ui-Od0">
-                                                            <rect key="frame" x="0.0" y="37.666666666666657" width="279" height="25.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
-                                                            </userDefinedRuntimeAttributes>
-                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8qq-vP-Cbx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="62.666666666666664" height="63"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="8qq-vP-Cbx" secondAttribute="height" multiplier="1:1" id="78z-3r-8Ue"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Rxu-Yn-DuU">
+                                                            <rect key="frame" x="62.666666666666671" y="0.0" width="176.33333333333331" height="63"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optimal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZJ-Kx-0Zy">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="176.33333333333334" height="29.666666666666668"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
+                                                                    <color key="textColor" red="0.1647058824" green="0.1960784314" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNC-Maschine optimale Schierung" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-ui-Od0">
+                                                                    <rect key="frame" x="0.0" y="37.666666666666671" width="176.33333333333334" height="25.333333333333329"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="pl4-2a-IjL" firstAttribute="leading" secondItem="k6H-4m-OhZ" secondAttribute="leading" constant="20" id="1cB-CI-4Fm"/>
+                                                <constraint firstItem="pl4-2a-IjL" firstAttribute="centerY" secondItem="k6H-4m-OhZ" secondAttribute="centerY" id="5qs-o8-cfi"/>
                                                 <constraint firstItem="k6H-4m-OhZ" firstAttribute="leading" secondItem="8bg-Bp-1Ch" secondAttribute="leading" constant="30" id="B0i-vJ-O61"/>
+                                                <constraint firstItem="k6H-4m-OhZ" firstAttribute="trailing" secondItem="pl4-2a-IjL" secondAttribute="trailing" constant="20" id="DXh-it-4KC"/>
                                                 <constraint firstItem="k6H-4m-OhZ" firstAttribute="top" secondItem="8bg-Bp-1Ch" secondAttribute="top" constant="15" id="Mda-Id-47E"/>
-                                                <constraint firstItem="Rxu-Yn-DuU" firstAttribute="height" secondItem="k6H-4m-OhZ" secondAttribute="height" multiplier="0.7" id="Tm5-KE-xcZ"/>
-                                                <constraint firstItem="Rxu-Yn-DuU" firstAttribute="centerY" secondItem="k6H-4m-OhZ" secondAttribute="centerY" id="XYS-wg-2kN"/>
+                                                <constraint firstItem="pl4-2a-IjL" firstAttribute="centerX" secondItem="k6H-4m-OhZ" secondAttribute="centerX" id="U5l-aZ-bsq"/>
+                                                <constraint firstItem="pl4-2a-IjL" firstAttribute="height" secondItem="k6H-4m-OhZ" secondAttribute="height" multiplier="0.7" id="YDa-Gk-0fS"/>
                                                 <constraint firstAttribute="trailing" secondItem="k6H-4m-OhZ" secondAttribute="trailing" constant="30" id="aKe-KC-cCR"/>
                                                 <constraint firstAttribute="bottom" secondItem="k6H-4m-OhZ" secondAttribute="bottom" constant="15" id="boQ-cK-ZbF"/>
-                                                <constraint firstItem="Rxu-Yn-DuU" firstAttribute="width" secondItem="k6H-4m-OhZ" secondAttribute="width" id="cyB-vh-IA5"/>
-                                                <constraint firstItem="Rxu-Yn-DuU" firstAttribute="centerX" secondItem="k6H-4m-OhZ" secondAttribute="centerX" id="yVY-bI-gj3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="QCk-ui-Od0" id="VyM-lZ-zsi"/>
+                                            <outlet property="icon" destination="8qq-vP-Cbx" id="Ce1-cg-EI2"/>
                                             <outlet property="label" destination="dZJ-Kx-0Zy" id="Zih-6u-DEv"/>
                                         </connections>
                                     </tableViewCell>

@@ -12,4 +12,5 @@ class ButtonWhiteBigCell: Cells {
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var icon: UIImageView!
 }

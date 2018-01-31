@@ -95,6 +95,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonWhiteBig") as! ButtonWhiteBigCell
                 cell.label.text = cellDescription.labelText
                 cell.descriptionLabel.text = cellDescription.descriptionText
+                cell.icon.image = UIImage(named: cellDescription.iconName)
                 return cell
             
             case let cellDescription as CellDescriptionMaterialButton:

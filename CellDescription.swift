@@ -40,11 +40,14 @@ class CellDescriptionConditionButton: CellDescription {
     var condition: Condition
     var labelText: String
     var descriptionText: String
+    var iconName: String
+
     
-    init(labelText: String, descriptionText: String, condition: Condition) {
+    init(labelText: String, descriptionText: String, condition: Condition, iconName: String) {
         self.condition = condition
         self.labelText = labelText
         self.descriptionText = descriptionText
+        self.iconName = iconName
     }
 }
 

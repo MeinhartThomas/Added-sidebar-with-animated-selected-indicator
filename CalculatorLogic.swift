@@ -85,9 +85,9 @@ class CalculatorLogic {
     
     private func setConditionSelectionScreen() {
         cells = [CellDescriptionDescriptionLabel(labelText: "Wähle die Bedingung"),
-                 CellDescriptionConditionButton(labelText: "Optimal", descriptionText: "CNC-Maschine \noptimale Schmierung", condition: Condition.optimal),
-                 CellDescriptionConditionButton(labelText: "Normal", descriptionText: "Werkstätte \nausreichende Schmierung", condition: Condition.normal),
-                 CellDescriptionConditionButton(labelText: "Schlecht", descriptionText: "Baustelle \nunzureichende Schmierung", condition: Condition.bad)]
+                 CellDescriptionConditionButton(labelText: "Optimal", descriptionText: "CNC-Maschine \noptimale Schmierung", condition: Condition.optimal, iconName: "thumb_optimal_black"),
+                 CellDescriptionConditionButton(labelText: "Normal", descriptionText: "Werkstätte \nausreichende Schmierung", condition: Condition.normal, iconName: "thumb_normal_black"),
+                 CellDescriptionConditionButton(labelText: "Schlecht", descriptionText: "Baustelle \nunzureichende Schmierung", condition: Condition.bad, iconName: "thumb_bad_black")]
         sidebarItems[0] = SideBarItemDescription(label: currentCalculation.work!.rawValue, icon: Work.getIconName(work: currentCalculation.work!))
         sidebarItems.append(SideBarItemDescription(label: "Bedingung", icon: "thumb_normal"))
     }
