@@ -25,6 +25,17 @@ enum Condition: String, Codable {
     case optimal = "Optimal"
     case normal = "Normal"
     case bad = "Schlecht"
+    
+    static func getIconName(condition: Condition) -> String {
+        switch condition {
+        case .optimal:
+            return "thumb_optimal"
+        case .normal:
+            return "thumb_normal"
+        case .bad:
+            return "thumb_bad"
+        }
+    }
 }
 
 enum Work: String, Codable {

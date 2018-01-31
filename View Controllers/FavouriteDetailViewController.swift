@@ -29,17 +29,28 @@ class FavouriteDetailViewController: UIViewController {
     @IBOutlet weak var forwardSpeed: UILabel!
     @IBOutlet weak var lubrication: UILabel!
     @IBOutlet weak var notes: UITextView!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var editButton: UIButton!
     
-    
-    
     var favourite: Favourite!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //rounded Corners
+        //backButton
+        let  backButtonItem = UIBarButtonItem()
+        backButtonItem.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+        backButtonItem.title = "Zurück"
+        navigationItem.backBarButtonItem = backButtonItem
+        
+        //saveButton.isEnabled = false
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
+    }
+    
+    
+    override func viewWillLayoutSubviews() {
+        //rounded corners
         let maskLayerWhite = CAShapeLayer()
         let path = UIBezierPath(roundedRect:cardView.bounds,
                                 byRoundingCorners:[.topRight, .bottomLeft],
@@ -51,32 +62,27 @@ class FavouriteDetailViewController: UIViewController {
         let pathForBlack = UIBezierPath(roundedRect: blackCardView.bounds, byRoundingCorners: [.topRight, .bottomLeft], cornerRadii: CGSize(width: 20, height:  20))
         maskLayerBlack.path = pathForBlack.cgPath
         blackCardView.layer.mask = maskLayerBlack
-        
-        
-        //backButton
-        let  backButtonItem = UIBarButtonItem()
-        backButtonItem.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
-        backButtonItem.title = "Zurück"
-        navigationItem.backBarButtonItem = backButtonItem
-        
-
-        saveButton.isEnabled = false
-        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         let dateFormatter : DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
+
         
-        //filling labels
-        name.text = favourite.name
-        date.text = dateFormatter.string(from: favourite.date)
-        //work.text = favourite.work
+//        //filling labels
+//        name.text = favourite.name
+//        date.text = dateFormatter.string(from: favourite.date)
+//        //work.text = favourite.work
+//
+//        tool.text = favourite.tool
+//     //FIx this
+//        if favourite.work == "Bohren" {
+//            if let sview = tool.superview{
+//                sview.removeFromSuperview()
+//            }
+//        }
         
-        tool.text = favourite.tool
-        if favourite.work == "Bohren" {
-            tool.superview?.removeFromSuperview()
-        }
         condition.text = condition.text
         material.text = favourite.material
         diameter.text = "\(favourite.diameter)mm"
@@ -90,20 +96,21 @@ class FavouriteDetailViewController: UIViewController {
             editButton.setTitle("hinzufügen", for: editButton.state)
         } else {
             notes.text = favourite.notes
-            editButton.setTitle("bearbeiten", for: editButton.state)
-
+            editButton.setTitle("anzeigen", for: editButton.state)
         }
 
-        
-        
         navigationItem.backBarButtonItem?.tintColor = #colorLiteral(red: 0.216707319, green: 0.2553483248, blue: 0.2605955899, alpha: 1)
-
     }
     
     
     @IBAction func rotationSpeedLabelChanged(_ sender: Any) {
-        saveButton.isEnabled = true
+        //saveButton.isEnabled = true
     }
+    
+    @IBAction func editBarButtonItem(_ sender: Any) {
+        
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
@@ -116,11 +123,11 @@ class FavouriteDetailViewController: UIViewController {
     }
     
     
-    @IBAction func saveChanges(_ sender: Any) {
-        let value = Int(rotationSpeed.text!)
-        favourite.setValue(value, forKey: "rotationSpeed")
-        FavouritesStore.saveContext()
-        rotationSpeed.resignFirstResponder()
-        saveButton.isEnabled = false
-    }
+//    @IBAction func saveChanges(_ sender: Any) {
+//        let value = Int(rotationSpeed.text!)
+//        favourite.setValue(value, forKey: "rotationSpeed")
+//        FavouritesStore.saveContext()
+//        rotationSpeed.resignFirstResponder()
+//        saveButton.isEnabled = false
+//    }
 }

@@ -89,7 +89,7 @@ class CalculatorLogic {
                  CellDescriptionConditionButton(labelText: "Normal", descriptionText: "Werkstätte \nausreichende Schmierung", condition: Condition.normal),
                  CellDescriptionConditionButton(labelText: "Schlecht", descriptionText: "Baustelle \nunzureichende Schmierung", condition: Condition.bad)]
         sidebarItems[0] = SideBarItemDescription(label: currentCalculation.work!.rawValue, icon: Work.getIconName(work: currentCalculation.work!))
-        sidebarItems.append(SideBarItemDescription(label: "Bedingung", icon: "conditionIcon"))
+        sidebarItems.append(SideBarItemDescription(label: "Bedingung", icon: "thumb_normal"))
     }
     
     private func setToolSelectionScreen() {
@@ -109,7 +109,7 @@ class CalculatorLogic {
                          CellDescriptionMaterialButton(labelText: "Aluminium", material: Material.aluminium),
                          CellDescriptionMaterialButton(labelText: "Messing / Bronze", material: Material.brassOrBronze),
                          CellDescriptionMaterialButton(labelText: "Kunststoff", material: Material.plastic)]
-                sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: "conditionIcon")
+                sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: Condition.getIconName(condition: currentCalculation.condition!))
                 sidebarItems.append(SideBarItemDescription(label: "Material", icon: "materialIcon"))
             case .lathing:
                 switch currentCalculation.workingStep! {
@@ -188,13 +188,13 @@ class CalculatorLogic {
                      CellDescriptionWorkingStepButton(labelText: "Schruppen", workingStep: WorkingStep.schruppen),
                      CellDescriptionWorkingStepButton(labelText: "Abstechen", workingStep: WorkingStep.abstechen),
                      CellDescriptionWorkingStepButton(labelText: "Einstechen", workingStep: WorkingStep.einstechen)]
-            sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: "conditionIcon")
+            sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: Condition.getIconName(condition: currentCalculation.condition!))
             sidebarItems.append(SideBarItemDescription(label: "Arbeitsschritt", icon: "workingStepIcon"))
         case Work.milling:
             cells = [CellDescriptionDescriptionLabel(labelText: "Wähle den Arbeitsschritt"),
                      CellDescriptionWorkingStepButton(labelText: "Schlichten", workingStep: WorkingStep.schlichten),
                      CellDescriptionWorkingStepButton(labelText: "Schruppen", workingStep: WorkingStep.schruppen)]
-            sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: "conditionIcon")
+            sidebarItems[1] = SideBarItemDescription(label: currentCalculation.condition!.rawValue, icon: Condition.getIconName(condition: currentCalculation.condition!))
             sidebarItems.append(SideBarItemDescription(label: "Arbeitsschritt", icon: "workingStepIcon"))
         }
     }

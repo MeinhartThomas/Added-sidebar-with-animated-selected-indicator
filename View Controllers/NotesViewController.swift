@@ -10,22 +10,30 @@ import UIKit
 
 class NotesViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var notesTextView: UITextView!
     var favourite: Favourite!
 
     @IBOutlet weak var cardView: UIView!
     
+    
+    @IBAction func editButtonPressed(_ sender: Any) {
+        if !notesTextView.isEditable {
+            notesTextView.isEditable = true
+            notesTextView.becomeFirstResponder()
+            editButton.title = "Speichern"
+        } else {
+            notesTextView.resignFirstResponder()
+            favourite.setValue(notesTextView.text, forKey: "notes")
+            FavouritesStore.saveContext()
+            editButton.title = "Bearbeiten"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        notesTextView.becomeFirstResponder()
         
-        //rounded Corners
-        let maskLayerWhite = CAShapeLayer()
-        let path = UIBezierPath(roundedRect:cardView.bounds,
-                                byRoundingCorners:[.topRight, .bottomLeft],
-                                cornerRadii: CGSize(width: 20, height:  20))
-        maskLayerWhite.path = path.cgPath
-        cardView.layer.mask = maskLayerWhite
+        
         
         //NavigationBar title
         let navigationBarTitle = UILabel()
@@ -39,11 +47,13 @@ class NotesViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         notesTextView.text = favourite.notes
+        
+        //rounded corners
+        let maskLayerWhite = CAShapeLayer()
+        let path = UIBezierPath(roundedRect:cardView.bounds,
+                                byRoundingCorners:[.topRight, .bottomLeft],
+                                cornerRadii: CGSize(width: 20, height:  20))
+        maskLayerWhite.path = path.cgPath
+        cardView.layer.mask = maskLayerWhite
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        favourite.setValue(notesTextView.text, forKey: "notes")
-        FavouritesStore.saveContext()
-    }
-
 }
