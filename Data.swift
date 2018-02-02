@@ -9,30 +9,53 @@
 import Foundation
 
 
-//class Lubrication{
-//    static func getLubrication(work: Work, workingStep: WorkingStep, material: Material) -> String{
-//        switch work {
-//        case .drilling:
-//            switch material {
-//            case .steelOver500: return "Emulsion, Schneideöl"
-//            case .steelUnder500: return "trocken, Emulsion"
-//            case .brassOrBronze: return "trocken, Emulsion, Schneideöl"
-//            case .aluminium: return "Schneideöl, Emulsion"
-//            case .
-//            }
-//        case .lathing:
-//            switch workingStep {
-//                case .schlichten
-//
-//                case .schruppen
-//            }
-//
-//
-//        case .milling:
-//            return
-//        }
-//    }
-//}
+class Lubrication{
+    static func getLubrication(work: Work, workingStep: WorkingStep, material: Material) -> String{
+        switch work {
+            
+        case .drilling:
+            switch material {
+            case .steelOver500: return "Emulsion, Schneidöl"
+            case .steelUnder500: return "trocken, Emulsion"
+            case .brassOrBronze: return "trocken, Emulsion, Schneidöl"
+            case .aluminium: return "Schneideöl, Emulsion"
+            case .plastic: break
+            }
+            
+        case .lathing:
+            switch workingStep {
+            case .schlichten:
+                    switch material {
+                    case .steelOver500: return "Emulsion, Schneidöl"
+                    case .steelUnder500: return "Emulsion, Schneidöl"
+                    case .brassOrBronze: return "trocken, Emulsion"
+                    case .aluminium: return "trocken, Schneidöl"
+                    case .plastic: break
+                }
+            case .schruppen:
+                switch material {
+                case .steelOver500: return "Emulsion, Lösung"
+                case .steelUnder500: return "trocken"
+                case .brassOrBronze: return "trocken"
+                case .aluminium: return "Emulsion, Schneidöl"
+                case .plastic: break
+                }
+            case .abstechen: break
+            case .einstechen: break
+            }
+        
+        case .milling:
+            switch material {
+            case .steelOver500: return "Emulsion, Lösung, Schneidöl"
+            case .steelUnder500: return "trocken, Emulsion"
+            case .brassOrBronze: return "trocken, Emulsion, Schneidöl"
+            case .aluminium: return "Schneidöl, Emulsion"
+            case .plastic: break
+            }
+        }
+        return ""
+    }
+}
 
 class CuttingAndForwardSpeed{
     

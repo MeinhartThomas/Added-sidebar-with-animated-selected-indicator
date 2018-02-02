@@ -43,6 +43,11 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         navigationItem.titleView = navigationBarTitle
         navigationItem.rightBarButtonItem = nil
         
+        let infoBtn = UIButton(type: .infoLight)
+        infoBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        let barBtn = UIBarButtonItem(customView: infoBtn)
+        navigationItem.leftBarButtonItem = barBtn
+        
     }
     
     @IBAction func tableTapped(_ sender: UITapGestureRecognizer) {
@@ -116,8 +121,9 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             case let cellDescription as CellDescriptionResult:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Result") as! ResultCell
                 cell.rotationSpeedLabel.text = "= \(cellDescription.rotationSpeedLabel) U/min"
-                cell.cuttingSpeedLabel.text = "= \(cellDescription.cuttingSpeedLabel) m/min"
-                cell.diameterLabel.text = "= \(cellDescription.diameterLabel) mm"
+                cell.cuttingSpeedLabel.text = "Vc = \(cellDescription.cuttingSpeedLabel) m/min"
+                cell.diameterLabel.text = "d = \(cellDescription.diameterLabel) mm"
+    
                 
                 let formula = createFormulaLabel(cuttingSpeed: cellDescription.cuttingSpeedLabel, diameter: cellDescription.diameterLabel)
 
