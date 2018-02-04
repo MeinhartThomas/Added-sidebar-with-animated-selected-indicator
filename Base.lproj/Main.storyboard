@@ -138,12 +138,12 @@
                                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" text="Favourite Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daJ-Dr-AYN">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="f3Z-QN-SrP">
                                                         <rect key="frame" x="0.0" y="20.333333333333329" width="414" height="64.333333333333329"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                                                    </textView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="gno-hu-lL1" userLabel="Drehzahl">
                                                         <rect key="frame" x="0.0" y="84.666666666666657" width="414" height="21"/>
                                                         <subviews>
@@ -153,8 +153,8 @@
                                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="420 U/min" placeholder="boom" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="sZt-F6-kyM">
-                                                                <rect key="frame" x="394" y="0.0" width="111" height="21"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="420 U/min" placeholder="boom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZt-F6-kyM">
+                                                                <rect key="frame" x="394" y="0.0" width="84" height="21"/>
                                                                 <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="done"/>
@@ -392,7 +392,7 @@
                         <outlet property="forwardSpeed" destination="XK5-Gw-ATO" id="qjK-W8-t9I"/>
                         <outlet property="lubrication" destination="a8r-tQ-qTE" id="oyX-AO-ghk"/>
                         <outlet property="material" destination="Mjg-9C-biH" id="bLg-zg-eD7"/>
-                        <outlet property="name" destination="daJ-Dr-AYN" id="F2n-8A-Qtk"/>
+                        <outlet property="name" destination="f3Z-QN-SrP" id="Npy-ER-pA2"/>
                         <outlet property="notes" destination="Vud-IQ-aVT" id="TVz-gv-Z4o"/>
                         <outlet property="rotationSpeed" destination="sZt-F6-kyM" id="4oi-Fa-Da5"/>
                         <outlet property="tool" destination="bBl-Zt-5kd" id="hDU-Wn-XDZ"/>
@@ -1012,6 +1012,7 @@
                                             <outlet property="cuttingSpeedLabel" destination="hha-w9-5hm" id="9vD-Mu-Mqn"/>
                                             <outlet property="diameterLabel" destination="bnM-qh-99d" id="hDv-cM-asR"/>
                                             <outlet property="formulaView" destination="lr3-JQ-VdD" id="Uxt-mw-HaZ"/>
+                                            <outlet property="lubricationLabel" destination="dQ3-dM-Y3v" id="ZdV-aw-OpF"/>
                                             <outlet property="mainStackView" destination="o1M-mv-gdK" id="2lP-Xw-gNB"/>
                                             <outlet property="rotationSpeedLabel" destination="VhK-Cv-gxO" id="Iwj-yG-ED0"/>
                                         </connections>

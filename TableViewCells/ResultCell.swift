@@ -16,5 +16,6 @@ class ResultCell: Cells {
     @IBOutlet weak var cuttingSpeedLabel: UILabel!
     @IBOutlet weak var diameterLabel: UILabel!
     @IBOutlet weak var formulaView: UIStackView!
+    @IBOutlet weak var lubricationLabel: UILabel!
     
 }

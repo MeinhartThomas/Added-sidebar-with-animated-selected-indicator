@@ -11,9 +11,6 @@ import UIKit
 
 //MARK: - Enums
 
-
-
-
 class CalculatorLogic {
     
     var currentCalculation = Calculation()
@@ -225,7 +222,7 @@ class CalculatorLogic {
     }
     
     private func setResultScreen(){
-        cells = [CellDescriptionResult(diameterLabel: String(describing: currentCalculation.diameter!), cuttingSpeedLabel: String(describing: currentCalculation.cuttingSpeed!), rotationSpeedLabel: String(describing: currentCalculation.rotationSpeed!)),
+        cells = [CellDescriptionResult(diameterLabel: String(describing: currentCalculation.diameter!), cuttingSpeedLabel: String(describing: currentCalculation.cuttingSpeed!), rotationSpeedLabel: String(describing: currentCalculation.rotationSpeed!), lubricationLabel: currentCalculation.lubrication! ),
                  CellDescriptionRestartButton()]
         
         switch currentCalculation.work! {

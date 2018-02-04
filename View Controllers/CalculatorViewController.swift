@@ -123,7 +123,12 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.rotationSpeedLabel.text = "= \(cellDescription.rotationSpeedLabel) U/min"
                 cell.cuttingSpeedLabel.text = "Vc = \(cellDescription.cuttingSpeedLabel) m/min"
                 cell.diameterLabel.text = "d = \(cellDescription.diameterLabel) mm"
-    
+               
+                if cellDescription.lubricationLabel == "" {
+                    cell.lubricationLabel.text = "-"
+                } else {
+                    cell.lubricationLabel.text = cellDescription.lubricationLabel
+                }
                 
                 let formula = createFormulaLabel(cuttingSpeed: cellDescription.cuttingSpeedLabel, diameter: cellDescription.diameterLabel)
 
@@ -204,7 +209,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 } else {
                     let diameter = NSString(string: textFieldDiameter.textField.text!).doubleValue
                     calculatorLogic.currentCalculation.diameter = diameter
-                    calculatorLogic.currentCalculation.getRotationSpeedAndForwardSpeed()
+                    calculatorLogic.currentCalculation.getRotationSpeedForwardSpeedAndLubrication()
                     calculatorLogic.setCellsForNextScreen()
                     tableView.reloadData()
                     sideBar.reloadData()
@@ -268,6 +273,8 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     //MARK: - TextField methods
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    
+        
         let decimalSeparator = ","
         
         let existingTextHasDecimalSeparator = textField.text?.range(of: decimalSeparator)
@@ -285,6 +292,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
         let ac = UIAlertController(title: "Name für Favourit", message: "Gib einen Namen für den Favouriten ein:", preferredStyle: .alert)
         ac.addTextField(configurationHandler: {(textfield: UITextField) -> Void in
             textfield.placeholder = "Favouritenname"
+            textfield.tag = 50
             textfield.addTarget(self, action: #selector(self.checkTextFieldFavouriteName), for: .editingChanged)
             self.textFieldFavouriteName = textfield
         })
@@ -304,6 +312,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func checkTextFieldFavouriteName(_ sender: UITextField) {
         self.alertSaveButton?.isEnabled = !(sender.text ?? "").isEmpty
+    
     }
     
 }

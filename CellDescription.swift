@@ -95,11 +95,13 @@ class CellDescriptionResult: CellDescription {
     var diameterLabel: String
     var cuttingSpeedLabel: String
     var rotationSpeedLabel: String
+    var lubricationLabel: String
     
-    init(diameterLabel: String, cuttingSpeedLabel: String, rotationSpeedLabel: String) {
+    init(diameterLabel: String, cuttingSpeedLabel: String, rotationSpeedLabel: String, lubricationLabel: String) {
         self.diameterLabel = diameterLabel
         self.cuttingSpeedLabel = cuttingSpeedLabel
         self.rotationSpeedLabel = rotationSpeedLabel
+        self.lubricationLabel = lubricationLabel
     }
 }
 

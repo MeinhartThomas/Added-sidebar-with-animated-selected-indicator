@@ -19,6 +19,7 @@ class Calculation: NSObject, NSCoding{
     var cuttingSpeed: Int?
     var rotationSpeed: Int?
     var forwardSpeed: Double?
+    var lubrication: String?
     var name: String?
     var notes: String?
     
@@ -29,11 +30,12 @@ class Calculation: NSObject, NSCoding{
     
     //MARK: - rotation speed calculation methods
     
-    func getRotationSpeedAndForwardSpeed(){
+    func getRotationSpeedForwardSpeedAndLubrication(){
         let values = CuttingAndForwardSpeed.getValuesFor(work: work!, workingStep: workingStep, tool: tool, material: material!)
         forwardSpeed = values.forwardSpeed
         cuttingSpeed = values.cuttingSpeed
         rotationSpeed = calculateRotationalSpeed(cuttingSpeed: values.cuttingSpeed!)
+        lubrication = Lubrication.getLubrication(work: work!, workingStep: workingStep ?? WorkingStep.abstechen, material: material!, condition: condition!)
     }
     
     private func calculateRotationalSpeed(cuttingSpeed: Int) -> Int {
