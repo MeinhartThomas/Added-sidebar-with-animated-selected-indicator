@@ -93,6 +93,7 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
             
             case _ as CellDescriptionTextField:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldWhite") as! TextFieldWhite
+                cell.textField.text = ""
                 cell.textField.becomeFirstResponder()
                 return cell
             
