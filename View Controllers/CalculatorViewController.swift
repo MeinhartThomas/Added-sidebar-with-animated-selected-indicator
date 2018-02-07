@@ -146,8 +146,8 @@ class CalculatorViewController: UIViewController, UITableViewDelegate, UITableVi
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RestartButton") as! RestartButton
                 
                 //Add Save To Favourites Button
-                let button = UIBarButtonItem(image: nil, style: .plain, target: self, action: #selector(saveToFavourites))
-                button.title = "Speichern"
+                let button = UIBarButtonItem(image: #imageLiteral(resourceName: "save_icon"), style: .plain, target: self, action: #selector(saveToFavourites))
+                //button.title = "Speichern"
                 button.tintColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
                 navigationItem.rightBarButtonItem = button
                 

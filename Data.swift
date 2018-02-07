@@ -13,7 +13,50 @@ class Lubrication{
     static func getLubrication(work: Work, workingStep: WorkingStep, material: Material, condition: Condition) -> String{
         
         switch condition {
-        case .normal: break
+        case .normal:
+            switch work {
+                
+            case .drilling:
+                switch material {
+                case .steelOver500: return "Emulsion, Schneidöl"
+                case .steelUnder500: return "Emulsion, Schneidöl"
+                case .brassOrBronze: return "trocken, Emulsion, Schneidöl"
+                case .aluminium: return "Schneideöl, Emulsion"
+                case .plastic: break
+                }
+                
+            case .lathing:
+                switch workingStep {
+                case .schlichten:
+                    switch material {
+                    case .steelOver500: return "Emulsion, Schneidöl"
+                    case .steelUnder500: return "Emulsion, Schneidöl"
+                    case .brassOrBronze: return "trocken, Emulsion"
+                    case .aluminium: return "trocken, Schneidöl"
+                    case .plastic: break
+                    }
+                case .schruppen:
+                    switch material {
+                    case .steelOver500: return "Emulsion, Lösung"
+                    case .steelUnder500: return "Emulsion, Lösung"
+                    case .brassOrBronze: return "trocken"
+                    case .aluminium: return "Emulsion, Schneidöl"
+                    case .plastic: break
+                    }
+                case .abstechen: break
+                case .einstechen: break
+                }
+                
+            case .milling:
+                switch material {
+                case .steelOver500: return "Emulsion, Lösung, Schneidöl"
+                case .steelUnder500: return "Emulsion, Lösung, Schneidöl"
+                case .brassOrBronze: return "trocken, Emulsion, Schneidöl"
+                case .aluminium: return "Schneidöl, Emulsion"
+                case .plastic: break
+                }
+            }
+            
         case .optimal:
             
             switch work {
